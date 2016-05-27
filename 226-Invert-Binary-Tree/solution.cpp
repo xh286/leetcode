@@ -12,7 +12,7 @@ public:
     TreeNode* invertTree(TreeNode* root) {
         /* BFS. Switch left & right children. */
         std::queue<TreeNode *> bfs_queue;
-        if(root)
+        if(root)// make sure only push non-NULL pointers into the queue
             bfs_queue.push(root);
         while(!bfs_queue.empty())
         {
