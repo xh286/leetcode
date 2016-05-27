@@ -11,8 +11,8 @@ public:
     void deleteNode(ListNode* node) {
         assert(node->next != NULL);
         node->val = node->next->val;
-        ListNote* p= node->next;
+        //ListNote* p= node->next;
         node->next = node->next->next;
-        free(p);
+        //free(p);
     }
 };
