@@ -34,14 +34,15 @@ public:
                 break;
             }
             // subtree is now child of stack top. Are we returning from left subtree, or right subtree? 
-            if(subtree == dfs_stack.back()->left && subtree != dfs_stack.back()->right) // returning from left subtree, and stack top is not leaf. Otherwise infinite loop.
+            TreeNode * subtree_parent = dfs_stack.back();
+            if(subtree == subtree_parent->left && subtree != subtree_parent->right) // returning from left subtree, and stack top is not leaf. Otherwise infinite loop.
             {
-                subtree = dfs_stack.back()->right;
+                subtree = subtree_parent->right;
                 subtree_popped = false;
             }
             else // returning from right subtree, pop parent.
             {
-                subtree = dfs_stack.back();
+                subtree = subtree_parent;
                 subtree_popped = true;
                 dfs_stack.pop_back();
             }
