@@ -29,5 +29,6 @@ public:
                 bfs_queue.push(parent->right);
             }
         }
+        return root;
     }
 };
