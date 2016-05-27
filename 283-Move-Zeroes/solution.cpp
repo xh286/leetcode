@@ -21,6 +21,7 @@ public:
         while(i < n)
         {
             nums[i] = 0;
+            i++;
         }
     }
 };
