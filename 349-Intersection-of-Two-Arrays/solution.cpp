@@ -22,7 +22,7 @@ public:
         // Now the unique elements of intersection are in set2.
         std::vector<int> intersection;
         std::unordered_set<int>::const_iterator it;
-        for(it=set2.first(); it != set2.end(); ++it)
+        for(it=set2.begin(); it != set2.end(); ++it)
         {
             intersection.push_back(*it);
         }
