@@ -12,7 +12,8 @@ public:
     TreeNode* invertTree(TreeNode* root) {
         /* BFS. Switch left & right children. */
         std::queue<TreeNode *> bfs_queue;
-        bfs_queue.push(root);
+        if(root)
+            bfs_queue.push(root);
         while(!bfs_queue.empty())
         {
             TreeNode* parent = bfs_queue.front();
