@@ -4,7 +4,7 @@ public:
         std::unordered_map<int, int> f; // frequency table
         int n = nums.size();
         int i = 0;
-        std::unordered_map<int,int>::const_iterator it;
+        std::unordered_map<int,int>::iterator it;
         for(i = 0; i < n; i++)
         {
             it = f.find(nums[i]);
