@@ -1,7 +1,7 @@
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-        size_t n = prices.size();
+        int n = prices.size();
         int entry_price = 0, exit_price = 0; 
         int total_profit = 0;
         bool has_long_position = false;
