@@ -4,20 +4,22 @@ public:
         std::unordered_map<int, int> f; // frequency table
         int n = nums.size();
         int i = 0;
+        std::unordered_map<int,int>::const_iterator it;
         for(i = 0; i < n; i++)
         {
-            std::pair<int, int> new_pair = {nums[i], 1};
-            if(f.find(nums[i]) == f.end()) // not found
-                f.insert(new_pair);
+            it = f.find(nums[i]);
+            if(it == f.end()) // not found
+                f.insert({nums[i],1});
             else
-                f[nums[i]]++;
+                it->second++;
         }
         // look for majority element
-        std::unordered_map<int,int>::const_iterator it;
+        
         for(it = f.begin(); it != f.end(); ++it)
         {
             if(it->second > n/2)
                 return it->first;
         }
+        return 0;
     }
 };
