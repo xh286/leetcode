@@ -6,7 +6,7 @@ public:
         int i = 0;
         for(i = 0; i < n; i++)
         {
-            std::pair<int, int> new_pair = (nums[i], 1);
+            std::pair<int, int> new_pair = {nums[i], 1};
             if(f.find(nums[i]) == f.end()) // not found
                 f.insert(new_pair);
             else
