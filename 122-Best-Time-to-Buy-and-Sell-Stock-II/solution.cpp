@@ -5,7 +5,7 @@ public:
         int entry_price = 0, exit_price = 0; 
         int total_profit = 0;
         bool has_long_position = false;
-        size_t i = 0;
+        int i = 0;
         for(i = 0; i < n-1; i++)
         {
             if( (has_long_position == false) && (prices[i+1] > prices[i]) ) // buy
