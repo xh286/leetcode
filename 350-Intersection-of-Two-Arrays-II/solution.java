@@ -13,7 +13,7 @@ public class Solution {
         {
             if(nums1_map.containsKey(x))
             {
-                nums1_map.put(x, nums1_map.getValue(x)+1);
+                nums1_map.put(x, nums1_map.get(x)+1);
             }
             else
             {
@@ -24,7 +24,7 @@ public class Solution {
         {
             if(nums2_map.containsKey(x))
             {
-                nums2_map.put(x, nums2_map.getValue(x)+1);
+                nums2_map.put(x, nums2_map.get(x)+1);
             }
             else
             {
