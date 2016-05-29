@@ -33,7 +33,7 @@ public class Solution {
         }
         // frequency tables ready, now iterate the smaller map and lookup in larger map to get output
         int i = 0;
-        for(Map.Entry<Integer,Integer> it : nums1_map)
+        for(Map.Entry<Integer,Integer> it : nums1_map.entrySet())
         {
             int k = it.getKey();
             if(nums2_map.containsKey(k)) // intersection found
