@@ -14,7 +14,7 @@ public:
                 table[i][words[i][k] - 'a']++;
             for(int k = 0; k < 26; k++)
                 if(table[i][k] > 0)
-                    c_words[i].append('a'+k);
+                    c_words[i].append((char)('a'+k));
         }
         
         for(int i=0; i<n; i++)
