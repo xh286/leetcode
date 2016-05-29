@@ -9,12 +9,12 @@ public:
         vector<string> c_words(n); // converted words. IN each word, characters are unique and ascending.
         for(int i=0; i<n; i++)
         {
-            l_words[i] = words[i].size();
-            for(int k = 0; k < l_words[i]; k++)
+            int len = words[i].size();
+            for(int k = 0; k < len; k++)
                 table[i][words[i][k] - 'a']++;
             for(int k = 0; k < 26; k++)
                 if(table[i][k] > 0)
-                    c_words[i].push_back('a'+k);
+                    c_words[i].push_back( (char)('a'+k));
         }
         
         for(int i=0; i<n; i++)
@@ -22,7 +22,9 @@ public:
             for(int j=i+1; j<n; j++)
             {// check collision 
                 bool collision = false;
-                for(int p = 0, q = 0; p < c_words[i].size() && q < c_words[j].size();)
+                int len1 = c_words[i].size();
+                int len2 = c_words[j].size();
+                for(int p = 0, q = 0; p < len1 && q < len2;)
                 {
                     if(c_words[i][p] < c_words[j][q])
                         p++;
@@ -36,7 +38,7 @@ public:
                 }
                 if(!collision)
                 {
-                    int product = l_words[i] * l_words[j];
+                    int product = words[i].size() * words[j].size();
                     if(product > maxproduct) 
                         maxproduct = product;
                 }
