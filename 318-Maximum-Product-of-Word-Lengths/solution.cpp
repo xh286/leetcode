@@ -4,7 +4,7 @@ public:
         // brute force solution as first step
         int n = words.size();
         int maxproduct = 0;
-        vector<vector<int> > table(n, vector<int>(26,0));
+        //vector<vector<int> > table(n, vector<int>(26,0));
         for(int i=0; i<n; i++)
         {
             for(int k = words[i].size() - 1; k >= 0; k--)
