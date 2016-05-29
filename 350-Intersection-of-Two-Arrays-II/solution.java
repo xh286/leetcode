@@ -47,11 +47,11 @@ public class Solution {
                 }
             }
         }
-        // set output[i - end] to null.
-        for(; i < output.length; i++)
+        int[] a = new int[i];
+        for(int j=0; j < i; j++)
         {
-            output[i] = null;
+            a[j] = output[j];
         }
-        return output;
+        return a;
     }
 }
