@@ -21,7 +21,7 @@ public class Solution {
                 i = i + 1;
             }
         }
-        n = i - 1;
+        n = i;
         int[] b = new int[n]; // output, copy a[0:i-2] to b.
         for(i = 0; i < n; i=i+1)
         {
