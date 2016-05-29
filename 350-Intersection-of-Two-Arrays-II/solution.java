@@ -33,6 +33,8 @@ public class Solution {
         }
         // frequency tables ready, now iterate the smaller map and lookup in larger map to get output
         int i = 0;
+        if(nums1_map.size() < nums2_map.size())
+        {
         for(Map.Entry<Integer,Integer> it : nums1_map.entrySet())
         {
             int k = it.getKey();
@@ -46,6 +48,24 @@ public class Solution {
                     i++;
                 }
             }
+        }
+        }
+        else
+        {
+        for(Map.Entry<Integer,Integer> it : nums2_map.entrySet())
+        {
+            int k = it.getKey();
+            if(nums1_map.containsKey(k)) // intersection found
+            {
+                int d = Math.min(nums1_map.get(k), nums2_map.get(k));
+                // now output d times
+                for(int j = 0; j < d; j++)
+                {
+                    output[i] = k;
+                    i++;
+                }
+            }
+        }
         }
         int[] a = new int[i];
         for(int j=0; j < i; j++)
