@@ -11,7 +11,7 @@ class Solution {
 public:
     vector<int> inorderTraversal(TreeNode* root) {
         const TreeNode* p = root;
-        vector<const TreeNode*> trav_stack;
+        stack<const TreeNode*> trav_stack;
         vector<int> output;
         while(true)
         {
