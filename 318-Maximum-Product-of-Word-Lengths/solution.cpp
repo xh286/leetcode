@@ -4,19 +4,19 @@ public:
         // brute force solution as first step
         int n = words.size();
         int maxproduct = 0;
+        vector< vector<int> > table(n, vector<int>(26,0));
         for(int i=0; i<n; i++)
         {
-            //build a frequency table
-            vector<int> table_i (26,0); // 26 characters, no need for hash set
             for(int k = words[i].size() - 1; k >= 0; k--)
-                table_i[words[i][k] - 'a']++;
-            //check for collision
+                table[i]][words[i][k] - 'a']++;
+        }
+        for(int i=0; i<n; i++)
             for(int j=i+1; j<n; j++)
-            {
+            {// check collision 
                 bool collision = false;
-                for(int k = words[j].size() - 1; k >= 0; k--)
+                for(int k = 0; k < 26, k++)
                 {
-                    if(table_i[words[j][k] - 'a'] > 0) // collision
+                    if(table[i][k] > 0 && table[j][k] > 0]) // collision
                     {
                         collision = true;
                         break;
