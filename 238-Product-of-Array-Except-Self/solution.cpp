@@ -13,7 +13,7 @@ public:
         for(int i = n-2; i >= 0; i--)
         {
             running_product *= nums[i+1];
-            output[i] * = running_product;
+            output[i] *= running_product;
         }
         return output;
     }
