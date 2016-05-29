@@ -16,7 +16,7 @@ public:
                 bool collision = false;
                 for(int k = 0; k < 26, k++)
                 {
-                    if(table[i][k] > 0 && table[j][k] > 0]) // collision
+                    if(table[i][k] > 0 && table[j][k] > 0) // collision
                     {
                         collision = true;
                         break;
@@ -25,7 +25,8 @@ public:
                 if(!collision)
                 {
                     int product = words[i].size() * words[j].size();
-                    if(product > maxproduct) maxproduct = product;
+                    if(product > maxproduct) 
+                        maxproduct = product;
                 }
             }
         }
