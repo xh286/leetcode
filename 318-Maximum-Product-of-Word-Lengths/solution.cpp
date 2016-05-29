@@ -8,7 +8,7 @@ public:
         for(int i=0; i<n; i++)
         {
             for(int k = words[i].size() - 1; k >= 0; k--)
-                table[i]][words[i][k] - 'a']++;
+                table[i][words[i][k] - 'a']++;
         }
         for(int i=0; i<n; i++)
             for(int j=i+1; j<n; j++)
