@@ -5,6 +5,7 @@ public:
         // use one bit to partition entire set into two subsets, then each subset xor result is a number.
         int n = nums.size();
         int bit_pattern = 0;
+        vector<int> output(2,0);
         for(int i=0; i < n; i++)
         {
             bit_pattern ^= nums[i];
@@ -15,9 +16,11 @@ public:
         {
             bit_pattern >>= 1;
             pos++;
+            if(bit_pattern == 0)
+                return output; // failure, return two zeros. Caller can find out.
         }
         // bit [pos] of bit_pattern was set
-        vector<int> output(2,0);
+
         for(int i=0; i < n; i++)
         {
             if(nums[i] & (1<<pos)) // if bit [pos] is set, put into same set as num1
