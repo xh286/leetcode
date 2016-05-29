@@ -22,7 +22,7 @@ public:
             for(int j=i+1; j<n; j++)
             {// check collision 
                 bool collision = false;
-                for(int p = 0, q = 0; p < c_words[i].length && q < c_words[j].length;)
+                for(int p = 0, q = 0; p < c_words[i].size() && q < c_words[j].size();)
                 {
                     if(c_words[i][p] < c_words[j][q])
                         p++;
