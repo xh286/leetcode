@@ -20,7 +20,6 @@ private:
 public:
     int romanToInt(string s) {
         int n = s.size();
-        string a(n);
         vector<int> b(n);
         int output = 0;
         for(int i=0; i<n; i++)
