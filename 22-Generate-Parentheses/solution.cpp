@@ -1,35 +1,33 @@
 class Solution {
 public:
     vector<string> generateParenthesis(int n) {
-        // Probably as long as at any point, the cumulative count of ')' does not exceed that of '(' then the sequence is valid.
-        // So the '(' want to distribute to the left. Start with the right-most distribution, or ()()...().
-        // Then swap some '(' with the ')' to the left of it. How many ways? 
-        // Another problem is keep answers unique. Because we only move '(' to the left, there are no duplicates?
+        // Analyze the induction. Found: From n pairs to (n+1) pairs, the special solution ()()...() evolves by appending() at the end. All other solutions get 3 new versions: 1. Insert a () in front of it. 2. Append a () after it. 3. Enclose it with (). The special solution also gets evolved by enclosing it with ().
+        // Problem is how to program this, as the structure of the output vector<string> gets changed many times, copies from self.
+        // Use ping-pong and reference.
+        string s("()"); // seed
         vector<string> a;
-        // insert first, base version
-        string b(2n);
-        for(int i=0; i<n; i++)
+        vector<string> b;
+        a.push_back(s);
+        if(n == 1) return a; // get rid of singular case to avoid bugs
+        // n >= 2
+        vector<string> & base = a;
+        vector<string> & derived = b;
+        for(int d = 2; d <= n; d++) // d is the degree of the subproblem
         {
-            b[2*i] = '(';
-            b[2*i+1] = ')';
-        }
-        a.push_back(b);
-        char temp = '\0';
-        if(n==1) return a; // guard against singular case, just in case...
-        for(int r = 1; r < 2*n; r++) // index always pointing to first right parenthese ')' that can be swapped to the right.
-        {
-            for(int l = r+1; l < 2*n; l++)//index always pointing to first left parenthese '(' that can be swapped to the left.
+            base = (d&1)? &b : &a;    // if d odd, then copy from b to a. If d even, then copy from a to b.
+            derived = (d&1)? &a : &b; // use a & b as ping-pong buffer. First time we derive b from a.
+            // Always keep special solution at index zero
+            derived.clear();
+            derived.push_back(base[0]+"()"); // special solution gets extended
+            derived.push_back("("+base[0]+")"); // special solution gets enclosed
+            // All other solutions get derived in 3 ways, insert()before, append ()after, enclose
+            for(int i=1; i< base.size(); i++)
             {
-                assert( (b[r] == ')') && (b[l] == '(') );
-                string c = b;
-                c[r] = b[l];
-                c[l] = b[r];
-                a.push_back(c);
-                // update l so that l points to next '('
-                l++;
-                while(b[l] != '(')
-                    l++;
+                derived.push_back("()"+base[i]);
+                derived.push_back(base[i]+"()");
+                derived.push_back("("+base[i]+")");
             }
         }
+        return derived;
     }
 };
