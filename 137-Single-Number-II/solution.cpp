@@ -6,7 +6,7 @@ public:
         // If the single number appears only once, then the counts should be all 0 or 1 for each bit.
         // If twice, then all 0 or 2 for each bit. So, if for certain bit, the count > 0, then set 1.
         // First get integer size.
-        int w = 32;
+        int w = sizeof(int)*8;
         vector<int> counts(w,0); // could be reduced to 2 bits * w instead of w ints. Constant space anyway.
         int n = nums.size();
         for(int i=0; i<n; i++)
