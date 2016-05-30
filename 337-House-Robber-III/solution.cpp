@@ -19,8 +19,9 @@ public:
         stack<TreeNode* > trav_stack;
         stack<int> maxval_wroot;
         stack<int> maxval_woroot;
-        bool subtree_visted = false;
+        bool subtree_visited = false;
         TreeNode* subtree = root;
+        int f, g;
         while(true)
         {
             if(subtree && !subtree_visited) // p_visited protection necessary for post-order DFS. Set to true when pop p from stack.
@@ -41,12 +42,13 @@ public:
                 {
                 }
                 trav_stack.pop(); // pop parent, process here
-                int child_f = maxval_wroot.top();
-                int child_g = maxval_woroot.top();
+                f = maxval_wroot.top();
+                g = maxval_woroot.top();
                 maxval_wroot.pop();
                 maxval_woroot.pop();
-                maxval_wroot.top() += child_g;
-                maxval_woroot.top() += max(child_f, child_g);
+                if(maxval_wroot.empty()) break;
+                maxval_wroot.top() += g;
+                maxval_woroot.top() += max(f, g);
                 subtree = parent; // go up one level
                 subtree_visited = true;
             }
@@ -56,5 +58,6 @@ public:
                 subtree_visited = false;
             }
         }
+        return max(f,g);
     }
 };
