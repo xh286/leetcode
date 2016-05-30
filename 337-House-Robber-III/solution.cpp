@@ -34,7 +34,7 @@ public:
             }
             // Subtree is either NULL or visited. Go back to stack top.
             if(trav_stack.empty()) break;
-            TreeNode* parent = trav_stack.top;
+            TreeNode* parent = trav_stack.top();
             // subtree is always left or right child of stack top. If right child, then done.
             if(subtree == parent->right)
             {
