@@ -14,10 +14,10 @@ public:
         bool hit = false;
         while(high - low > 1)
         {
-            mid = (high + low) / 2; // floored
+            mid = (high + low) / 2; // floored, because of this, can miss high.
             if(target > nums[mid])
                 low = mid;
-            else if(targe < nums[mid])
+            else if(target < nums[mid])
                 high = mid;
             else // hit
             {
@@ -26,6 +26,11 @@ public:
         }
         if(hit)
             return mid;
+        if(target == nums[low])
+            return low;
+        if(target == nums[high])
+            return high;
+        // no hit
         return low+1;
     }
 };
