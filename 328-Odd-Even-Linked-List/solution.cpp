@@ -19,12 +19,12 @@ public:
         {
             if(mod_odd)
             {
-                if(!p2->next)
+                if(!p2->next) // look ahead
                 {
                     p1->next = p2_head; // done
                     break;
                 }
-                else
+                else // normal case
                 {
                     p1->next = p2->next;
                     p1 = p2->next;
@@ -33,13 +33,13 @@ public:
             }
             else
             {
-                if(!p1->next)
+                if(!p1->next) // look ahead
                 {
                     p2->next = NULL;
                     p1->next = p2_head;
                     break;
                 }
-                else
+                else // normal case
                 {
                     p2->next = p1->next;
                     p2 = p1->next;
