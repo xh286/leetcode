@@ -1,7 +1,7 @@
 class Solution {
 public:
     int searchInsert(vector<int>& nums, int target) {
-        // binary search.
+        // binary search, conservative version. Regular binary search is aggressive, and end condition is high < low.
         int high = nums.size() - 1;
         int low = 0;
         // first deal with special cases: out of range
