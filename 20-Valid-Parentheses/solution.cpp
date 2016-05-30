@@ -12,19 +12,19 @@ public:
                 case '{':
                     test_stack.push(s[i]); break;
                 case ')':
-                    if(test_stack.top() != '(')
+                    if(test_stack.empty() || test_stack.top() != '(')
                         return false;
                     else
                         test_stack.pop();
                     break;
                 case ']':
-                    if(test_stack.top() != '[')
+                    if(test_stack.empty() || test_stack.top() != '[')
                         return false;
                     else
                         test_stack.pop();
                     break;
                 case '}':
-                    if(test_stack.top() != '{')
+                    if(test_stack.empty() || test_stack.top() != '{')
                         return false;
                     else
                         test_stack.pop();
