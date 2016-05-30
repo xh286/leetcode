@@ -10,24 +10,37 @@ public:
         a.push_back(s);
         if(n == 1) return a; // get rid of singular case to avoid bugs
         // n >= 2
-        vector<string> & base = a;
-        vector<string> & derived = b;
         for(int d = 2; d <= n; d++) // d is the degree of the subproblem
         {
-            base = (d&1)? &b : &a;    // if d odd, then copy from b to a. If d even, then copy from a to b.
-            derived = (d&1)? &a : &b; // use a & b as ping-pong buffer. First time we derive b from a.
-            // Always keep special solution at index zero
-            derived.clear();
-            derived.push_back(base[0]+"()"); // special solution gets extended
-            derived.push_back("("+base[0]+")"); // special solution gets enclosed
-            // All other solutions get derived in 3 ways, insert()before, append ()after, enclose
-            for(int i=1; i< base.size(); i++)
+            if(d&1 == 0) // d even iteration
             {
-                derived.push_back("()"+base[i]);
-                derived.push_back(base[i]+"()");
-                derived.push_back("("+base[i]+")");
+                // Always keep special solution at index zero
+                b.clear();
+                b.push_back(a[0]+"()"); // special solution gets extended
+                b.push_back("("+a[0]+")"); // special solution gets enclosed
+                // All other solutions get derived in 3 ways, insert()before, append ()after, enclose
+                for(int i=1; i< a.size(); i++)
+                {
+                    b.push_back("()"+a[i]);
+                    b.push_back(a[i]+"()");
+                    b.push_back("("+a[i]+")");
+                }
+            }
+            else // d odd iteration
+            {
+                // Always keep special solution at index zero
+                a.clear();
+                a.push_back(b[0]+"()"); // special solution gets extended
+                a.push_back("("+b[0]+")"); // special solution gets enclosed
+                // All other solutions get derived in 3 ways, insert()before, append ()after, enclose
+                for(int i=1; i< b.size(); i++)
+                {
+                    a.push_back("()"+b[i]);
+                    a.push_back(b[i]+"()");
+                    a.push_back("("+b[i]+")");
+                }
             }
         }
-        return derived;
+        return (n&1)?a:b;
     }
 };
