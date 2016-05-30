@@ -17,8 +17,8 @@ public:
         if(root == NULL) return 0;
         // Post order DFS. Update parent value when returning from left subtree and right subtree.
         stack<TreeNode* > trav_stack;
-        stack<int> maxval_wroot;
-        stack<int> maxval_woroot;
+        stack<int> f_stack;
+        stack<int> g_stack;
         bool subtree_visited = false;
         TreeNode* subtree = root;
         int f, g;
@@ -27,8 +27,8 @@ public:
             if(subtree && !subtree_visited) // p_visited protection necessary for post-order DFS. Set to true when pop p from stack.
             {
                 trav_stack.push(subtree); // push left chains by pre-order
-                maxval_wroot.push(subtree->val);
-                maxval_woroot.push(0);
+                f_stack.push(subtree->val);
+                g_stack.push(0);
                 subtree = subtree->left;
                 continue;
             }
@@ -42,13 +42,13 @@ public:
                 {
                 }
                 trav_stack.pop(); // pop parent, process here
-                f = maxval_wroot.top();
-                g = maxval_woroot.top();
-                maxval_wroot.pop();
-                maxval_woroot.pop();
-                if(maxval_wroot.empty()) break;
-                maxval_wroot.top() += g;
-                maxval_woroot.top() += max(f, g);
+                f = f_stack.top();
+                g = g_stack.top();
+                f_stack.pop();
+                g_stack.pop();
+                if(f_stack.empty()) break;
+                f_stack.top() += g;
+                g_stack.top() += max(f, g);
                 subtree = parent; // go up one level
                 subtree_visited = true;
             }
