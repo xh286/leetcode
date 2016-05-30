@@ -3,7 +3,7 @@ public:
     bool isValid(string s) {
         stack<char> test_stack;
         int n = s.size();
-        for(i=0; i<n; i++)
+        for(int i=0; i<n; i++)
         {
             switch(s[i])
             {
