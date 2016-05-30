@@ -14,6 +14,7 @@ private:
             case 'M': i = 1000; break;
             default:  i = 0;
         }
+        return i;
     }
     
 public:
