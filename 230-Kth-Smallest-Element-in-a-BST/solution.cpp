@@ -31,7 +31,7 @@ public:
             p = p->right;
         }
         
-        
+        return 0;
         // For follow up question, a parent pointer will be most convenient. 
         // If removed key < kth, then iterator--, or go to "pre". Otherwise, iterator++ (assuming unique keys), or go to "next".
         // Parent pointer easy to update when modifying tree.
