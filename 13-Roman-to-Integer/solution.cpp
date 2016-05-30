@@ -20,20 +20,17 @@ private:
 public:
     int romanToInt(string s) {
         int n = s.size();
-        vector<int> b(n);
         int output = 0;
-        for(int i=0; i<n; i++)
+        int this_val;
+        int next_val = 0;
+        for(int i=n-1; i>=0; i--)
         {
-            b[i] = romanToInt_s(s[i]);
-        }
-        for(int i=0; i<n-1; i++)
-        {
-            if(b[i] < b[i+1])
-                b[i] = -1 * b[i];
-        }
-        for(int i=0; i<n; i++)
-        {
-            output += b[i];
+            this_val = romanToInt_s(s[i]);
+            if(this_val<next_val)
+                output -= this_val;
+            else
+                output += this_val;
+            next_val = this_val;
         }
         return output;
     }
