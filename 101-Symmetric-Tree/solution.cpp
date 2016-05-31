@@ -9,11 +9,11 @@
  */
 class Solution {
 public:
-    bool twoTreesSymmetric(TreeNode* p, TreeNode* p)
+    bool twoTreesSymmetric(TreeNode* p, TreeNode* q)
     {
         if(!p && !q) return true;
         if( (!p && q) || (p && !q) ) return false;
-        return(twoTreesSymmetric(p->left, q->right) && twoTreesSymmetric(p->right, q->left));
+        return((p->val == q->val) && twoTreesSymmetric(p->left, q->right) && twoTreesSymmetric(p->right, q->left));
     }
     bool isSymmetric(TreeNode* root) {
         // First recursive solution. Good reference for iterative solution too.
