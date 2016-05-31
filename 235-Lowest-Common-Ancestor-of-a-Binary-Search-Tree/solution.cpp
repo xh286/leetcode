@@ -17,7 +17,7 @@ public:
         vector<TreeNode*> trav_stack;
         TreeNode* subtree = root;
         vector<TreeNode*> first_path;
-        bool found_one = true;
+        bool found_one = false;
         bool subtree_visited = false;
         while(true)
         {
@@ -51,7 +51,7 @@ public:
         }
         // now trav_stack and first_path contain paths from root to p and q. Find last common entry.
         TreeNode* result = NULL;
-        if(first_path.empty() || trav_stack.empty()) assert(0); // at least one not found, need study more here.
+        if(first_path.empty() || trav_stack.empty()) return NULL; // at least one not found, need study more here.
         // first entry must be root, no need to test
         int i, j;
         for(i=1, j=1; i<first_path.size() && j < trav_stack.size() ; i++, j++)
