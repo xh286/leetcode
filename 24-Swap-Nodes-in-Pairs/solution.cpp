@@ -16,7 +16,8 @@ public:
         
         ListNode * p = next_p;
         ListNode * p2 = p->next;
-        ListNode * next_p = p2->next;
+        
+        next_p = p2->next;
         
         while(next_p)
         {
