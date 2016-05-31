@@ -7,7 +7,7 @@ public:
         vector<int> b(n, 0); // assume prices are non-negative
         for(int i=n-2; i >= 0; i--)
         {
-            b[i] = max(prices[i+1], b[i+1];
+            b[i] = max(prices[i+1], b[i+1]);
 
         }
         // b[n-1] is 0, b[n-2] is max(a[n-1:end]), b[i] is max(a[i+1:end]), b[0] is max(a[1:end]).
