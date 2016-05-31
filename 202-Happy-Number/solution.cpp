@@ -27,6 +27,10 @@ public:
             {
                 result = false; break;
             }
+            else
+            {
+                history.insert(n);
+            }
         }
         return result;
     }
