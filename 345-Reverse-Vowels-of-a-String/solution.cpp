@@ -1,7 +1,7 @@
 class Solution {
 public:
     string reverseVowels(string s) {
-        string v; // stack of vowels
+        vector<char> v; // stack of vowels
         string r = s; // result
         int n = s.size();
         for(int i=0; i<n; i++)
