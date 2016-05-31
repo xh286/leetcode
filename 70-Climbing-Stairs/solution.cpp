@@ -39,10 +39,10 @@ public:
             {
                 vector<int> c = b; // c is temporary matrix holding prior value of b
                 // b = c * a[d].
-                b[i][0] = c[0]*a[d][0] + c[1]*a[d][2];
-                b[i][1] = c[0]*a[d][1] + c[1]*a[d][3];
-                b[i][2] = c[2]*a[d][0] + c[2]*a[d][3];
-                b[i][3] = c[2]*a[d][1] + c[3]*a[d][3];
+                b[0] = c[0]*a[d][0] + c[1]*a[d][2];
+                b[1] = c[0]*a[d][1] + c[1]*a[d][3];
+                b[2] = c[2]*a[d][0] + c[2]*a[d][3];
+                b[3] = c[2]*a[d][1] + c[3]*a[d][3];
             }
             d++;
             bit_pattern >>= 1;
