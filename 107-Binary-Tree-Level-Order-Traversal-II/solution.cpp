@@ -20,7 +20,7 @@ public:
         // Do a post-order DFS. First time to find out maximum depth, second time to insert values into appropriate positions.
         // The visit functions are different, and the functions need to return a depth value. No, just copy-paste.
         
-        // Note: Check trivial cases here
+        // Note: Check at least 3 trivial cases here
         TreeNode* subtree = root;
         bool subtree_visited = false;
         vector<TreeNode*> trav_stack;
