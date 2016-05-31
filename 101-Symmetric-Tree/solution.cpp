@@ -20,4 +20,6 @@ public:
         if(root == NULL) return true;
         return(twoTreesSymmetric(root->left, root->right));
     }
+    // Iterative solution can be inspired from recursive version. Do simultaneous pre-order DFS (regular & reverse order).
+    // Do the pointer comparisons like above, and value comparisons when pushing into stacks.
 };
