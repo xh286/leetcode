@@ -19,7 +19,7 @@ class Solution {
         int heightDiff = leftHeight - rightHeight;
         if(heightDiff < 0) heightDiff *= -1;
         if(heightDiff > 1) return -1;
-        height = max(leftHeight, rightHeight) + 1;
+        int height = max(leftHeight, rightHeight) + 1;
         return height;
     }
 public:
