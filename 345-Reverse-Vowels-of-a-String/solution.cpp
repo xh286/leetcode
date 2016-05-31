@@ -1,21 +1,32 @@
 class Solution {
+private:
+    bool charIsVowel(char c)
+    {
+        return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U');
+    }
 public:
     string reverseVowels(string s) {
-        string v; // stack of vowels
         string r = s; // result
         int n = s.size();
-        for(int i=0; i<n; i++)
+        int low = 0;
+        int high = n-1;
+        while(low<high) // rethink condition later
         {
-            if(s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u' || s[i] == 'A' || s[i] == 'E' || s[i] == 'I' || s[i] == 'O' || s[i] == 'U')
-                v.push_back(s[i]);
-        }
-        for(int i=0; i<n; i++)
-        {
-            if(s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u' || s[i] == 'A' || s[i] == 'E' || s[i] == 'I' || s[i] == 'O' || s[i] == 'U')
+            if(!charIsVowel(s[low]))
             {
-                r[i] = v.back();
-                v.pop_back();
+                low++; 
+                continue;
             }
+            if(!charIsVowel(s[high]))
+            {
+                high--; 
+                continue;
+            }
+        // Here both s[low] and s[high] are vowels, swap in r and move low/high closer.
+            r[low] = s[high];
+            r[high] = s[low];
+            high--;
+            low++;
         }
         return r;
     }
