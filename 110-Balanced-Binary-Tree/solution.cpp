@@ -24,6 +24,6 @@ class Solution {
     }
 public:
     bool isBalanced(TreeNode* root) {
-        subtreeHeight(root);
+        return (subtreeHeight(root) >= 0);
     }
 };
