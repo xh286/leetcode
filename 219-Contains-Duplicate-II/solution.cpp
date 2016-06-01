@@ -17,7 +17,7 @@ public:
                     it->second = i;
             }
             else // new key, insert
-                val_idx.insert(nums[i], i);
+                val_idx.insert({nums[i], i});
         }
         return false;
     }
