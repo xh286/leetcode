@@ -19,4 +19,5 @@ public:
         }
         return (n-c);
     }
+    // My algorithm does not change the order of elements. So, suboptimal. Could be faster if using another pointer at end moving left. Just swap elements.
 };
