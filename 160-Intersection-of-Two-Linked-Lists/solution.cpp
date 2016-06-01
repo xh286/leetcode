@@ -15,7 +15,7 @@ private:
         if(!head) return NULL; // empty list
         ListNode* p2 = p1->next;
         if(!p2) return head; // single node
-        while(p2)
+        while(p1)
         {
             p1->next = p0;
             p0 = p1;
