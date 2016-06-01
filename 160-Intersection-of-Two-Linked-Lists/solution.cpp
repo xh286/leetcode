@@ -49,7 +49,7 @@ public:
         int lenA = getLinkedListLen(headA); // a+c
         int lenB = getLinkedListLen(headB); // b+c
         ListNode* lastNodep = reverseLinkedList(headA);
-        int lenN; // a + b
+        int lenN = 0; // a + b
         ListNode* p = headB;
         while(p)
         {
