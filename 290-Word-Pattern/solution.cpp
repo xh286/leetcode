@@ -27,7 +27,7 @@ public:
             b.push_back(temp);
             temp.clear();
         }
-        string a = &pattern; // reference, easier to type
+        string& a = pattern; // reference, easier to type
         // check size equal, otherwise no way for one-to-one mapping
         if(a.size() != b.size()) return false;
         // check 1-to-1 relationship.
