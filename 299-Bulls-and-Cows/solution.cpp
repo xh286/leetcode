@@ -24,8 +24,9 @@ public:
             cows += min(b_s[i], b_g[i]);
         }
         // Now generate output. Note that bulls and cows can be multiple digits
-        string s;
-        s << bulls << 'A' << cows << 'B';
+        std::ostringstream temp;
+        temp << bulls << 'A' << cows << 'B';
+        string s = temp.str();
         return s;
     }
 };
