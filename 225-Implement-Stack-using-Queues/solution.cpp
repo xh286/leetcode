@@ -29,7 +29,7 @@ public:
 
     // Return whether the stack is empty.
     bool empty() {
-        return queues.[out_idx].empty();
+        return queues[out_idx].empty();
     }
     Stack(): out_idx(0), queues(vector<queue<int>>(2,queue<int>())) {} // constructor
 };
