@@ -6,7 +6,7 @@ class Queue {
     // If his desk is empty, and someone asks him to process a mail, he goes to the mailbox and fetches all the mail home, reverse their order onto his desk, and start processing. Meanwhile, his mailbox continues to receive mail.
     stack<int> mailbox; // mail comes in, top is end of queue.
     stack<int> desk; // mail gets processed, top is front of queue.
-    private fetch_mail()
+    private void fetch_mail()
     {
         int n = mailbox.size();
             for(int i=0; i < n; i++)
