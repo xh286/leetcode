@@ -17,6 +17,7 @@ public:
         while(n >= p)
         {
             r += n/p;
+            // Be careful of overflow
             if(p<=INT_MAX/5)
                 p *= 5;
             else
