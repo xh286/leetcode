@@ -17,7 +17,7 @@ public:
         while(n >= p)
         {
             r += n/p;
-            p = p * 5;
+            p *= 5;
         }
         return r;
         // Now verify the algorithm.
