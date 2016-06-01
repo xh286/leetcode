@@ -33,6 +33,7 @@ public:
         // check 1-to-1 relationship.
         unordered_map<char,string> char2str_map;
         unordered_set<string> mapped_strings;
+        n = a.size();
         for(int i=0; i<n; i++)
         {
             unordered_map<char,string>::iterator it = char2str_map.find(a[i]);
