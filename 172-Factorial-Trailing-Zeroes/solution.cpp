@@ -17,7 +17,10 @@ public:
         while(n >= p)
         {
             r += n/p;
-            p *= 5;
+            if(p<=INT_MAX/5)
+                p *= 5;
+            else
+                break;
         }
         return r;
         // Now verify the algorithm.
