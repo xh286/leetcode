@@ -43,7 +43,7 @@ public:
             }
             else // not mapped before, try to insert
             {
-                unordered_set<string>::it2 = mapped_strings.find(b[i]);
+                unordered_set<string>::iterator it2 = mapped_strings.find(b[i]);
                 if(it != mapped_strings.end()) // this string is mapped before
                 {
                     return false;
