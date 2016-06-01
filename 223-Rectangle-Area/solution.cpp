@@ -9,8 +9,8 @@ public:
         int intersectionArea = 0;
         if( (Lx < Hx) && (Ly < Hy) )
             intersectionArea = (Hx - Lx) * (Hy - Ly);
-        assert( (A < C) && (B < D) );
-        assert( (E < G) && (F < H) );
+        assert( (A <= C) && (B <= D) );
+        assert( (E <= G) && (F <= H) );
         int Rect1Area = (C-A) * (D-B);
         int Rect2Area = (G-E) * (H-F);
         return (Rect1Area + Rect2Area - intersectionArea);
