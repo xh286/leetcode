@@ -57,5 +57,6 @@ public:
             }
         }
         return true;
+        // Could be optimized in several ways. Map backwards, so use mapped_chars instead of mapped_strings, and only need to use a short 26-length vector of chars, because of the assumption.
     }
 };
