@@ -17,7 +17,7 @@ public:
         while(n >= p)
         {
             r += n/p;
-            // Be careful of overflow
+            // Be careful of overflow, causes while loop condition to fail, and infinite loop.
             if(p<=INT_MAX/5)
                 p *= 5;
             else
