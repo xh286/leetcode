@@ -58,15 +58,15 @@ public:
             lenN++;
             p = p->next;
         }
+        // recover list A
+        ListNode* recovered_headA = reverseLinkedList(lastNodep);
+        assert(recovered_headA == headA);
         if(!p) // p stopped at NULL, no intersection
             return NULL;
         assert(p == headA); // lenN is a + b.
         int c = (lenA+lenB-lenN)/2;
         int a = lenA - c;
         int b = lenB - c;
-        // recover list A
-        ListNode* recovered_headA = reverseLinkedList(lastNodep);
-        assert(recovered_headA == headA);
         // Get first common node. Note that b could be zero.
         p = headB;
         int i = 0;
