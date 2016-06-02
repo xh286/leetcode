@@ -16,7 +16,7 @@ public:
         for(int i=0; i<k; i++) // i is row index
         {
             // process row i
-            for(j = i; j < n; j += d) // jump by d distance each time. Starting at i.
+            for(int j = i; j < n; j += d) // jump by d distance each time. Starting at i.
             {
                 r.push_back(s[j]);
                 int d2 = d - 2*i; // secondary offset relative to the base indices j. For row 0, this is same as d.
