@@ -33,6 +33,7 @@ public:
                 int temp = nums[(j+k)%n];
                 nums[(j+k)%n] = val;
                 val = temp;
+                j += k;
             }
         }
         return;
