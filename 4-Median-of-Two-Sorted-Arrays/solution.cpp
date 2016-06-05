@@ -41,7 +41,9 @@ public:
                 if(a[ha-d] >= b[n-1]) // then no need to search a[1:ha-d-1]
                     la = ha-d;
                 else
-                    
+                    {
+                        
+                    }
             }
         }
             
