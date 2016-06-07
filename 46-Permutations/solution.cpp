@@ -23,7 +23,7 @@ public:
                     // Now do the copy and insert into r
                     r.push_back(vector<int>());
                     int p = r.size()-1; // p points to last vector, could change to a counter here
-                    // "dup" from r[j] to r[p]. Move a[k] to a[i] and all entries [i+1...k-1] to the right.
+                    // "dup" from r[j] to r[p]. Move a[k] to a[i] and all entries [i+1...k-1] to the right, also copy [k+1...n]
                     for(int q=0; q<i; q++)
                         r[p].push_back(r[j][q]);
                     r[p].push_back(a[k]);
