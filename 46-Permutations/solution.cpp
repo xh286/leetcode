@@ -35,5 +35,6 @@ public:
             }
         }
         return r;
+        // Could it be better to reserve all space beforehand?
     }
 };
