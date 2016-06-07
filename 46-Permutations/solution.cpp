@@ -21,14 +21,16 @@ public:
                 for(int j=0; j<s; j++) // do this for all s rows
                 {
                     // Now do the copy and insert into r
-                    r.push_back();
+                    r.push_back(vector<int>());
                     int p = r.size()-1; // p points to last vector, could change to a counter here
                     // "dup" from r[j] to r[p]. Move a[k] to a[i] and all entries [i+1...k-1] to the right.
                     for(int q=0; q<i; q++)
                         r[p].push_back(r[j][q]);
                     r[p].push_back(a[k]);
-                    for(int q=i+1; q<k; q++)
+                    for(int q=i+1; q<=k; q++)
                         r[p].push_back(r[j][q-1]);
+                    for(int q=k+1; q<n; q++)
+                        r[p].push_back(r[j][q]);
                 }
             }
         }
