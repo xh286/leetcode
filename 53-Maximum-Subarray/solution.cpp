@@ -31,7 +31,7 @@ private:
             if(a[i-1] < 0 && a[i-2] + a[i-1] >= 0 && a[i-1] + a[i] >=0) // consolidate
             {
                 int sum = a[i-2]+a[i-1]+a[i];
-                r.push_back();
+                r.push_back(sum);
             }
             else
             {
