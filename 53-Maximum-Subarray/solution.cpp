@@ -39,6 +39,7 @@ private:
                 r.push_back(a[i-1]);
             }
         }
+        return r;
     }
     
 public:
