@@ -6,7 +6,7 @@ public:
         vector<int> v(n,1);
         for(int j=1; j<m; j++)
         {
-            for(i=1; i<n; i++)
+            for(int i=1; i<n; i++)
             {
                 v[i] += v[i-1];
             }
