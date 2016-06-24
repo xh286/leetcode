@@ -6,11 +6,10 @@ public:
         // End condition is we wrote n^2 entries. large number, long long.
         // Maintain i_l lower limit, i_h higher limit, i_d direction. Four iterations in each loop.
         // Iter 1: after complete, j_l increment. Iter 2: after complete, i_h decrement.
-        // Iter 3: after complete, j_h decrement. Iter 4: after complete, i_l decrement.
+        // Iter 3: after complete, j_h decrement. Iter 4: after complete, i_l increment.
         // Input assumes n^2 can be held by int.
         int c = 1;
         int i_l = 0, i_h = n-1, j_l = 0, j_h = n-1;
-        int i_d = 1, j_d = 0;
         while(c <= n*n)
         {
             for(int i=i_l; i<=i_h; i++)
@@ -24,7 +23,7 @@ public:
             j_h--;
             for(int j=j_h; j>=j_l; j--)
                 r[j][i_l] = c++;
-            i_l--;
+            i_l++;
         }
         return r;
     }
