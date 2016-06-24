@@ -9,7 +9,7 @@
  */
 class Solution {
 private:
-    void rlDFS(TreeNode* root, vector<int>& r, vector<int>& v, int level)
+    void rlDFS(TreeNode* root, vector<int>& r, vector<bool>& v, int level)
     {
         if(!root) return;
         if(level > v.size())
