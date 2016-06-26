@@ -34,7 +34,7 @@ public:
             p2 = p2->next;
             j2a[++k] = p2;
         }
-        for(p=new_head, k=0; p != NULL, p=p->next)
+        for(p=new_head, k=0; p != NULL; p=p->next)
         {
             p->random = j2a[i2j[++k]];
         }
