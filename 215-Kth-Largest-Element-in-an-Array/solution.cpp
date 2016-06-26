@@ -34,7 +34,7 @@ public:
             int ll_exclude_pivot = pivot - low;
             if(rl_include_pivot > k)
             {
-                low = pivot;
+                low = pivot + 1;
             }
             else if (rl_include_pivot < k)
             {
