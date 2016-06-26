@@ -1,9 +1,11 @@
 class Solution {
+
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
         int n = nums.size();
         std::sort(nums.begin(), nums.end());
         vector<vector<int>> r;
+        map<Triplet, 
         map<int,int> vm;
         for(int i=0; i<n; i++)//if duplicates, then use max of index as mapped value
             vm[nums[i]] = i;
@@ -22,13 +24,17 @@ public:
                 map<int,int>::iterator it = vm.find(target);
                 if(it != vm.end() && it->second > j) // found match
                 {
-                    r.push_back();
+                    if(r.empty() || !(r.back()[0] == nums[i] && r.back()[1] == nums[j]))
+                    {
+                    r.push_back(vector<int>());
                     r.back().push_back(nums[i]);
                     r.back().push_back(nums[j]);
                     r.back().push_back(it->first);
+                    }
                 }
             }
         }
+        
         return r;
     }
 };
