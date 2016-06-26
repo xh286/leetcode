@@ -1,14 +1,14 @@
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
+        int n = nums.size();
         std::sort(nums.begin(), nums.end());
         vector<vector<int>> r;
         map<int,int> vm;
         for(int i=0; i<n; i++)//if duplicates, then use max of index as mapped value
             vm[nums[i]] = i;
-        
         // Require that triplet[0]<=triplet[1]<=triplet[2].
-        int n = nums.size();
+        
         for(int i=0; i<n-2; i++)
         {
             if(a[i] > 0) break;
