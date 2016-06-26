@@ -43,7 +43,7 @@ public:
             }
             else
             {
-                return a[pivot];
+                return nums[pivot];
             }
         }
     }
