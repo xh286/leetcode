@@ -9,9 +9,9 @@
  */
 class Solution {
 private:
-    bool int_intersect(const Interval& a, const Interval& b) const
+    bool is_disjoint(const Interval& a, const Interval& b) const
     {
-        return ~((a.start > b.end) || (b.start > a.end));
+        return ((a.start > b.end) || (b.start > a.end));
     }
     
 public:
@@ -19,7 +19,7 @@ public:
         // Sort by start, then go through list once.
         // Optionally, after sort by start, for same start, keep only max end version.
         std::sort(intervals.begin(), intervals.end(),
-            [](const Interval& a, const Interval& b) const {return (a.start<b.start);});
+            [](const Interval& a, const Interval& b){return (a.start<b.start);});
         vector<Interval> r;
         Interval new_interval;
         if(!intervals.empty())
@@ -27,9 +27,9 @@ public:
         for(std::vector<Interval>::const_iterator it = intervals.begin(); it != intervals.end();)
         {
             auto it2 = it+1;
-            for(; it2 != intervals.end() && int_intersect(*it, *it2); it2++)
+            for(; (it2 != intervals.end()) && !is_disjoint(new_interval, *it2); it2++)
             {
-                new_interval.end = std::max(it->end, it2->end);
+                new_interval.end = std::max(new_interval.end, it2->end);
             }
             r.push_back(new_interval);
             if(it2 != intervals.end())
