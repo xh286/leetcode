@@ -1,21 +1,40 @@
 class Solution {
 private:
-    void removeLeadingspace(string &s)
+    void compactString(string &s) // remove all leading / trailing spaces, compact all consecutive spaces to single
     {
         int c = 0;
-        char*p = &s[0];
-        while(*p && isspace(*p1))
-        {
-            c++;
-            p++;
-        }
-        if(c == 0) return;
         int n = s.size();
-        for(int i=0; i<n-c; i++)
+        bool leading = true;
+        bool pre_isspace = false;
+        for(int i=0; i<n; i++)
         {
-            s[i] = s[i+c];
+            if(isspace(s[i]))
+            {
+                if(leading || pre_isspace)
+                    c++;
+                else
+                    s[i-c] = s[i];
+                pre_isspace = true;
+            }
+            else
+            {
+                leading = false;
+                pre_isspace = false;
+                s[i-c] = s[i];
+            }
         }
-        s[n-c] = '\0';
+        // now string end is moved c places to the left
+        // s[n-c] = s[n];
+        // remove trailing spaces
+        for(int i=n-c-1; i>=0; i--)
+        {
+            if(isspace(s[i]))
+                c++;
+            else
+                break;
+        }
+        s[n-c] = s[n];
+        s.resize(n-c);
     }
     void revString(char* p1, char* p2) // p1<=p2
     {
@@ -30,12 +49,12 @@ private:
     }
 public:
     void reverseWords(string &s) {
+        compactString(s);
         int n = s.size();
-        removeLeadingspace(s);
+        if(n==0) return;
         char* p1 = &s[0];
         char* p2 = &s[n-1];
         revString(p1,p2);
-        removeLeadingspace(s);
         p1 = &s[0];
         p2 = p1;
         while(*p1)
