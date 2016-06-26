@@ -26,7 +26,7 @@ public:
             new_interval = intervals[0];
         for(std::vector<Interval>::const_iterator it = intervals.begin(); it != intervals.end();)
         {
-            auto it2 = it1+1;
+            auto it2 = it+1;
             for(; it2 != intervals.end() && int_intersect(*it, *it2); it2++)
             {
                 new_interval.end = std::max(it->end, it2->end);
