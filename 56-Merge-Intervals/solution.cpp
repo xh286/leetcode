@@ -22,7 +22,7 @@ public:
             [](Interval a, Interval b){return (a.start<b.start);});
         vector<Interval> r;
         Interval new_interval = intervals[0];
-        for(std::vector<Interval>::const_iterator it = intervals.begin(); it != itervals.end();)
+        for(std::vector<Interval>::const_iterator it = intervals.begin(); it != intervals.end();)
         {
             auto it2 = it+1;
             if(it2 != intervals.end())
