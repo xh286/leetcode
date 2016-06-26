@@ -46,5 +46,6 @@ public:
                 return nums[pivot];
             }
         }
+        return 0;
     }
 };
