@@ -31,7 +31,6 @@ public:
             int pivot = my_partition(nums, low, high, low + distribution(generator));
             // [low...pivot-1] <= pivot, [pivot+1...high] >= pivot.
             int rl_include_pivot = high - pivot + 1; // length to the right, including pivot
-            int ll_exclude_pivot = pivot - low;
             if(rl_include_pivot > k)
             {
                 low = pivot + 1;
