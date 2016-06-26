@@ -19,7 +19,7 @@ public:
         // Sort by start, then go through list once.
         // Optionally, after sort by start, for same start, keep only max end version.
         std::sort(intervals.begin(), intervals.end(),
-            [](Interval a, Interval b){return (a.start<b.start);});
+            [](const Interval& a, const Interval& b) const {return (a.start<b.start);});
         vector<Interval> r;
         Interval new_interval;
         if(!intervals.empty())
@@ -37,6 +37,8 @@ public:
                 new_interval = *it2;
                 it = it2;
             }
+            else
+                break;
         }
         return r;
     }
