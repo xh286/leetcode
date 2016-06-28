@@ -16,6 +16,7 @@ private:
     {
         t2k.erase(k2t[key]);
         t2k[ts] = key;
+        k2t[key] = ts;
     }
     void eraseLRU()
     {
