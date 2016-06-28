@@ -26,7 +26,7 @@ public:
             while(!dq.empty() && dq.back() < nums[i]) dq.pop_back();
             dq.push_back(nums[i]);
         }
-        r.push_back(dq.front());
+        r.push_back(dq.front()); // easy to miss the last one.
         return r;
     }
 };
