@@ -38,7 +38,6 @@ private:
     void refreshEntry(LI it, int value)
     {
         int key = it->key;
-        int value = value;
         LRUlist.erase(it);
         LRUlist.push_front({key, value});
         key2addr[key] = LRUlist.begin();
