@@ -29,15 +29,14 @@ private:
     void insertNewpair(int key, int value, unsigned ts) // not exception safe
     {
         k2v[key] = value;
+        t2k[ts] = key;
         k2t[key] = ts;
-        t2k.insert({ts,key});
         size++;
     }
     void updatePair(int key, int value, unsigned ts)
     {
         k2v[key] = value;
         update_ts(key,ts);
-        k2t[key] = ts;
     }
 public:
     LRUCache(int capacity) : 
@@ -74,8 +73,5 @@ public:
             insertNewpair(key, value, counter); // this will increase size by 1.
             counter++;
         }
-        assert(k2v.size()==size);
-        assert(k2t.size()==size);
-        assert(t2k.size()==size);
     }
 };
