@@ -17,7 +17,7 @@ private:
         ListNode* next;
         ListNode(int k = 0, int v = 0, unsigned t = 0, ListNode* p1 = NULL, ListNode* p2 = NULL):
             key(k), value(v), n(t), pre(p1), next(p2){}
-    }
+    };
     unordered_map<int,ListNode*> key2addr;
     ListNode* head;
     ListNode* tail;
