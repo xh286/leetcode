@@ -12,7 +12,7 @@ private:
     struct KVpair{
         int key;
         int value;
-        ListNode(int k = 0, int v = 0):
+        KVpair(int k = 0, int v = 0):
             key(k), value(v){}
     };
     list<KVpair> LRUlist;
