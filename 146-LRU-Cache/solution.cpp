@@ -25,7 +25,7 @@ private:
     unsigned size;
     unsigned cap;
     
-    insertNodeAfterTail(int key, int value)
+    void insertNodeAfterTail(int key, int value)
     {
         ListNode* p = new ListNode(key, value, t, tail, head);
         if(head == NULL) // empty list, first node
@@ -43,7 +43,7 @@ private:
         t++;
         size++;
     }
-    replaceLRU(int key, int value)
+    void replaceLRU(int key, int value)
     {
         key2addr.erase(tail->key); // erase old key -> tail mapping
         tail->key = key;
@@ -55,10 +55,12 @@ private:
         tail = tail->pre;
         t++;
     }
-    refreshEntry(ListNode* p, int value)
+    void refreshEntry(ListNode* p, int value)
     {
         p->n = t;
         p->value = value;
+        if(p == head)
+            return;
         if(p == tail) // p points to tail, includes capacity=1 case.
         {
             head = tail;
