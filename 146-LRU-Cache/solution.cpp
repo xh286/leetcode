@@ -23,8 +23,8 @@ private:
     
     void insertNodeAfterTail(int key, int value)
     {
-        LI it = LRUlist.push_front({key,value});
-        key2addr[key] = it;
+        LRUlist.push_front({key,value});
+        key2addr[key] = LRUlist.begin();
         size++;
     }
     void replaceLRU(int key, int value)
@@ -32,16 +32,16 @@ private:
         old_key = LRUlist.back().key;
         key2addr.erase(old_key);
         LRUlist.pop_back();
-        LI it = LRUlist.push_front({key,value});
-        key2addr[key] = it;
+        LRUlist.push_front({key,value});
+        key2addr[key] = LRUlist.begin();
     }
     void refreshEntry(LI it, int value)
     {
         int key = it->key;
         int value = value;
         LRUlist.erase(it);
-        it = LRUlist.push_front({key, value});
-        key2addr[key] = it;
+        LRUlist.push_front({key, value});
+        key2addr[key] = LRUlist.begin();
     }
 public:
     LRUCache(int capacity) : head(NULL), tail(NULL), size(0), cap(capacity) {
