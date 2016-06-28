@@ -15,7 +15,7 @@ public:
     }
     
     void pop() {
-        if(s.empty()) return;
+        // if(s.empty()) return;
         // assert(!m.empty());
         if(s.top() == m.top())
             m.pop();
