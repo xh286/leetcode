@@ -43,7 +43,7 @@ private:
         key2addr[key] = LRUlist.begin();
     }
 public:
-    LRUCache(int capacity) : head(NULL), tail(NULL), size(0), cap(capacity) {
+    LRUCache(int capacity) : size(0), cap(capacity) {
         
     }
     
