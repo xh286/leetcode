@@ -29,7 +29,7 @@ private:
     }
     void replaceLRU(int key, int value)
     {
-        old_key = LRUlist.back().key;
+        int old_key = LRUlist.back().key;
         key2addr.erase(old_key);
         LRUlist.pop_back();
         LRUlist.push_front({key,value});
