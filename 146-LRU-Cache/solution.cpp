@@ -21,12 +21,6 @@ private:
     unsigned size;
     unsigned cap;
     
-    void insertNodeAfterTail(int key, int value)
-    {
-        LRUlist.push_front({key,value});
-        key2addr[key] = LRUlist.begin();
-        size++;
-    }
     void replaceLRU(int key, int value)
     {
         int old_key = LRUlist.back().key;
@@ -70,7 +64,11 @@ public:
             if(size == cap)
                 replaceLRU(key, value);
             else
-                insertNodeAfterTail(key, value);
+            {
+                LRUlist.push_front({key,value});
+                key2addr[key] = LRUlist.begin();
+                size++;
+            }
         }
     }
     // Note: actually t is not needed, as we manually maintain it.
