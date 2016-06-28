@@ -108,4 +108,7 @@ public:
                 insertNodeAfterTail(key, value);
         }
     }
+    // Note: actually t is not needed, as we manually maintain it.
+    // Could implement in C++ way, using the list container. That would be better for interview.
+    // Would use more hash set erase, insert, but hash set erase, insert are fast anyway.
 };
