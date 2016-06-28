@@ -84,15 +84,13 @@ public:
     
     int get(int key) {
         unordered_map<int,ListNode*>::const_iterator it = key2addr.find(key);
+        int val = -1;
         if(it != key2addr.end())
         {
-            refreshEntry(it->second, it->second->value);
-            return it->second->value;
+            val = it->second->value;
+            refreshEntry(it->second, val);
         }
-        else
-        {
-            return -1;
-        }
+        return val;
     }
     
     void set(int key, int value) {
