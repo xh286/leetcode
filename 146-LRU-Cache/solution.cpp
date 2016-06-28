@@ -59,7 +59,7 @@ private:
     {
         p->n = t;
         p->value = value;
-        if(p == head)
+        if(p == head) // p points to head, no processing needed.
             return;
         if(p == tail) // p points to tail, includes capacity=1 case.
         {
@@ -67,7 +67,7 @@ private:
             tail = tail->pre;
             return;
         }
-        // p is not tail. Move node pointed by p to head.
+        // p must not be head or tail. Move node pointed by p to head.
         p->pre->next = p->next;
         p->next->pre = p->pre;
         p->pre = tail;
