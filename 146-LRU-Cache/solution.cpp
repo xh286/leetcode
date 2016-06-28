@@ -12,22 +12,20 @@ private:
     struct ListNode{
         int key;
         int value;
-        unsigned n;
         ListNode* pre;
         ListNode* next;
-        ListNode(int k = 0, int v = 0, unsigned t = 0, ListNode* p1 = NULL, ListNode* p2 = NULL):
-            key(k), value(v), n(t), pre(p1), next(p2){}
+        ListNode(int k = 0, int v = 0, ListNode* p1 = NULL, ListNode* p2 = NULL):
+            key(k), value(v), pre(p1), next(p2){}
     };
     unordered_map<int,ListNode*> key2addr;
     ListNode* head;
     ListNode* tail;
-    unsigned t;
     unsigned size;
     unsigned cap;
     
     void insertNodeAfterTail(int key, int value)
     {
-        ListNode* p = new ListNode(key, value, t, tail, head);
+        ListNode* p = new ListNode(key, value, tail, head);
         if(head == NULL) // empty list, first node
         {
             tail = head = p;
@@ -40,7 +38,6 @@ private:
             tail->next = head;
         }
         key2addr[key] = p;
-        t++;
         size++;
     }
     void replaceLRU(int key, int value)
@@ -48,16 +45,13 @@ private:
         key2addr.erase(tail->key); // erase old key -> tail mapping
         tail->key = key;
         tail->value = value;
-        tail->n = t;
         key2addr[key] = tail; // build new key -> tail mapping
         // old tail becomes new head. move both head & tail backwards. works even if only 1 node.
         head = tail;
         tail = tail->pre;
-        t++;
     }
     void refreshEntry(ListNode* p, int value)
     {
-        p->n = t;
         p->value = value;
         if(p == head) // p points to head, no processing needed.
             return;
@@ -75,10 +69,9 @@ private:
         head->pre = p;
         tail->next = p;
         head = p;
-        t++;
     }
 public:
-    LRUCache(int capacity) : head(NULL), tail(NULL), t(0), size(0), cap(capacity) {
+    LRUCache(int capacity) : head(NULL), tail(NULL), size(0), cap(capacity) {
         
     }
     
