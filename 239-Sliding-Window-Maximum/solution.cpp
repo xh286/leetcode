@@ -20,12 +20,13 @@ public:
         for(; i < n; i++)
         {
             int fallout = nums[i-k];
-            this_max = dq.front();
+            int this_max = dq.front();
             r.push_back(this_max);
             if(this_max == fallout) dq.pop_front();
             while(!dq.empty() && dq.back() < nums[i]) dq.pop_back();
             dq.push_back(nums[i]);
         }
+        r.push_back(dq.front());
         return r;
     }
 };
