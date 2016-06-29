@@ -1,7 +1,7 @@
 class Solution {
     
 private:
-    bool isReflected1D(vector<int>& x) // x is non-empty
+    bool isReflected1D(vector<int>& x, int& y2) // x is non-empty
     {
         unordered_set<int> x_s;
         int x_min = x[0];
@@ -14,10 +14,10 @@ private:
             if(x[i] < x_min) x_min = x[i];
             else if(x[i] > x_max) x_max = x[i];
         }
-        int x_mid2 = x_min + x_max;
+        y2 = x_min + x_max;
         for(int i=0; i<n; i++)
         {
-            if(x_s.find(x_mid2-x[i]) == x_s.end())
+            if(x_s.find(y2-x[i]) == x_s.end())
                 return false;
         }
         return true;
@@ -29,11 +29,12 @@ public:
         vector<vector<int>> v;
         unordered_map<int,int> y2i; // maps y to index in v
         int n = points.size();
+        if(n==0) return true;
         for(int i=0; i<n; i++)
         {
             int y = points[i].second;
             int x = points[i].first;
-            map<int,int>::iterator it = y2i.find(y);
+            unordered_map<int,int>::iterator it = y2i.find(y);
             if(it != y2i.end())
             {
                 v[it->second].push_back(x);
@@ -47,10 +48,16 @@ public:
             }
         }
         n = v.size();
-        for(int i=0; i<n; i++)
+        int last_y2, y2;
+        if(!isReflected1D(v[i]), y2)
+            return false;
+        last_y2 = y2;
+        for(int i=1; i<n; i++)
         {
-            if(!isReflected1D(v[i]))
+            if(!isReflected1D(v[i], y2) || y2 != last_y2)
                 return false;
+            else
+                last_y2 = y2;
         }
         return true;
     }
