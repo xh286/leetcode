@@ -14,7 +14,7 @@ private:
             if(x[i] < x_min) x_min = x[i];
             else if(x[i] > x_max) x_max = x[i];
         }
-        x_mid2 = x_min + x_max;
+        int x_mid2 = x_min + x_max;
         for(int i=0; i<n; i++)
         {
             if(x_s.find(x_mid2-x[i]) == x_s.end())
