@@ -11,7 +11,8 @@ public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
         if(!l1 && !l2) return NULL;
         ListNode* head;
-        ListNode* pre, p;
+        ListNode* pre;
+        ListNode* p;
         // Edge case: return zero if sum is zero. Create first node anyway!
         int a = 0, b = 0, c = 0;
         bool first_node = true;
