@@ -33,8 +33,8 @@ public:
             }
             pre = p;
             c = (sum>=10)?1:0;
-            l1 = l1->next;
-            l2 = l2->next;
+            if(l1) l1 = l1->next;
+            if(l2) l2 = l2->next;
         }while(l1!=NULL || l2!=NULL || c!=0);
         return head;
     }
