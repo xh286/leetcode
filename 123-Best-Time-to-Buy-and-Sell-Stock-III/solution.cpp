@@ -13,9 +13,10 @@ public:
         // Here f(1,i) = max(f(1,i-1),a[i]+u[i]) where u[i] = max(-a[j]) over j in {0,...,i-1}.
         // So we can see u and f overwritten during each round.
         int n = prices.size();
+        if(n==0) return 0;
         vector<int>& a = prices;
         vector<int> f(n,0); // init to f(0,i).
-        vector<int> u(n,0);
+        vector<int> u(n,INT_MIN);
         int K = 2; // run 2 iterations
         for(int k=1; k<=K; k++)
         {
