@@ -33,7 +33,7 @@ public:
             }
             pre = p;
             c = (sum>=10)?1:0;
-            if(l1) l1 = l1->next;
+            if(l1) l1 = l1->next; // easy to miss the if condition here.
             if(l2) l2 = l2->next;
         }while(l1!=NULL || l2!=NULL || c!=0);
         return head;
