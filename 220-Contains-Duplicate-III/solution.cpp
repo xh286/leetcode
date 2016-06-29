@@ -11,14 +11,18 @@ public:
         if(n==0 || k<=0 || t<0) return false;
         if(k>n-1) k = n-1;
         multiset<int> window; // size k
-        for(int i=0; i<k; i)
+        for(int i=0; i<k; i++)
             window.insert(nums[i]);
         for(int i=k; i<n; i++)
         {
-            auto it = window.lower_bound(nums[i]-t);
+            long long val_to_test = static_cast<long long>(nums[i]) - t;
+            if(val_to_test < INT_MIN) val_to_test = INT_MIN;
+            auto it = window.lower_bound(static_cast<int>(val_to_test));
             if(it != window.end())
             {
-                if(*it <= nums[i]+t)
+                val_to_test = static_cast<long long>(nums[i]) + t;
+                if(val_to_test > INT_MAX) val_to_test = INT_MAX;
+                if(*it <= static_cast<int>(val_to_test))
                     return true;
             }
             window.erase(nums[i-k]);
