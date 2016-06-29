@@ -15,14 +15,10 @@ public:
             window.insert(nums[i]);
         for(int i=k; i<n; i++)
         {
-            long long val_to_test = static_cast<long long>(nums[i]) - t;
-            if(val_to_test < INT_MIN) val_to_test = INT_MIN;
-            auto it = window.lower_bound(static_cast<int>(val_to_test));
+            auto it = window.lower_bound(nums[i]-t);
             if(it != window.end())
             {
-                val_to_test = static_cast<long long>(nums[i]) + t;
-                if(val_to_test > INT_MAX) val_to_test = INT_MAX;
-                if(*it <= static_cast<int>(val_to_test))
+                if(*it <= nums[i]+t)
                     return true;
             }
             window.erase(nums[i-k]);
