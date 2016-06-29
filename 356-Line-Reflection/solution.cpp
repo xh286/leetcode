@@ -49,7 +49,7 @@ public:
         }
         n = v.size();
         int last_y2, y2;
-        if(!isReflected1D(v[0], y2)
+        if(!isReflected1D(v[0], y2))
             return false;
         last_y2 = y2;
         for(int i=1; i<n; i++)
