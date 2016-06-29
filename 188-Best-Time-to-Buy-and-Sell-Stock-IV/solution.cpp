@@ -17,7 +17,7 @@ public:
         vector<int>& a = prices;
         vector<int> f(n,0); // init to f(0,i).
         vector<int> u(n,INT_MIN);
-        k = min(k,n);
+        if(k>n) k = n;
         for(int j=1; j<=k; j++) // run k iterations
         {
             for(int i=1; i<n; i++)
