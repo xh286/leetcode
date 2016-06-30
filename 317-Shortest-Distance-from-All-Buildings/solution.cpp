@@ -2,6 +2,8 @@ class Solution {
 private:
     vector<vector<int>> Dist2OneBuilding(vector<vector<int>>& grid, int ii, int jj)
     {
+        int m = grid.size();
+        int n = grid[0].size();
         // Return distances to given building at (i,j).
         vector<vector<int>> dist(m,vector<int>(n,-1));
         queue<pair<int,int>> bfs_queue;
