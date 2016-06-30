@@ -8,7 +8,7 @@ private:
         vector<vector<int>> dist(m,vector<int>(n,-1));
         queue<pair<int,int>> bfs_queue;
         // assert(grid[ii][jj] == 1);
-        bfs_queue.insert({ii,jj});
+        bfs_queue.push({ii,jj});
         dist[ii][jj]=0;
         while(!bfs_queue.empty())
         {
