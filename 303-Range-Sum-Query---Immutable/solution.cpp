@@ -3,7 +3,8 @@ private:
     vector<int> u;
     int n;
 public:
-    NumArray(vector<int> &nums) : n(nums.size()), u(vector<int>(n+1,0)) {
+    NumArray(vector<int> &nums) : n(nums.size()) {
+        u = vector<int>(n+1,0);
         for(int i=1; i<n+1; i++)
             u[i] = u[i-1] + nums[i-1];
         // u[0] = 0, u[i] = sum(nums[0...i-1]).
