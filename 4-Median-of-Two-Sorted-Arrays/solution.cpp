@@ -15,11 +15,10 @@ public:
         // If b[j-1] > a[i], then low = i+1. End of loop when low>high.
         int low = 0;
         int high = m-1;
-        int i, j;
         while(true)
         {
-            i = low+(high-low)/2;
-            j = (m+n+1)/2 -i;
+            int i = low+(high-low)/2;
+            int j = (m+n+1)/2 -i;
             if(i!=0 && j!=n && a[i-1] > b[j]) high = i-1;
             else if(j!=0 && i != m && b[j-1] > a[i]) low = i+1;
             else // return from here
