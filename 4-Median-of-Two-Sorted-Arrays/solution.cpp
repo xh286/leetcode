@@ -13,7 +13,7 @@ public:
         // If b[j-1] > a[i], then low = i+1. End of loop when low>high.
         int low = 0;
         int high = m-1;
-        int i;
+        int i, j;
         while(true)
         {
             i = low+(high-low)/2;
