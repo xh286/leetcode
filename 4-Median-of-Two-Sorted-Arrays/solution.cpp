@@ -22,7 +22,7 @@ public:
             j = (m+n+1)/2 -i;
             if(i!=0 && j!=n && a[i-1] > b[j]) high = i-1;
             else if(j!=0 && i != m && b[j-1] > a[i]) low = i+1;
-            else
+            else // return from here
             {
                 int left_max = INT_MIN;
                 if(i!=0) left_max = max(left_max,a[i-1]);
@@ -37,6 +37,5 @@ public:
                 return ((double)(left_max+right_min)/2.0);
             }
         }
-        return 0;
     }
 };
