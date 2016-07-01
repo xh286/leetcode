@@ -15,7 +15,7 @@ public:
             auto it = c2i.find(s[i]);
             if(it != c2i.end())
             {
-                max_len = max(max_len, c2i.size());
+                if(c2i.size() > max_len) max_len = c2i.size();
                 int j = it->second;
                 // erase s[erase_start...j]
                 for(int k = erase_start; k <= j; k++)
@@ -24,7 +24,7 @@ public:
             }
             c2i[s[i]] = i;
         }
-        max_len = max(max_len, c2i.size());
+        if(c2i.size() > max_len) max_len = c2i.size();
         return max_len;
     }
 };
