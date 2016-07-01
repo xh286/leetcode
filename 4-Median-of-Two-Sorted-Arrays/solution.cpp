@@ -24,15 +24,15 @@ public:
             else // return from here
             {
                 int left_max = INT_MIN;
-                if(i!=0) left_max = max(left_max,a[i-1]);
-                if(j!=0) left_max = max(left_max,b[j-1]);
+                if(i!=0 && a[i-1]>left_max) left_max = a[i-1];
+                if(j!=0 && b[j-1]>left_max) left_max = b[j-1];
                 if((m+n)%2 == 1)
                 {
                     return left_max;
                 }
                 int right_min = INT_MAX;
-                if(i!=m) right_min = min(right_min, a[i]);
-                if(j!=n) right_min = min(right_min, b[j]);
+                if(i!=m && a[i]<right_min) right_min = a[i];
+                if(j!=n && b[j]< right_min) right_min = b[j];
                 return ((double)(left_max+right_min)/2.0);
             }
         }
