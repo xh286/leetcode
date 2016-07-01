@@ -4,6 +4,8 @@ public:
         int m = nums1.size();
         int n = nums2.size();
         if(m>n) return findMedianSortedArrays(nums2,nums1); // require m<=n.
+        vector<int>& a = nums1;
+        vector<int>& b = nums2;
         // Partition into two sets: Left: a[0...i-1], b[0...j-1] and Right: a[i...m-1], b[j...n-1].
         // If m+n odd, then Left can be 1 longer. Otherwise, Left and Right same length.
         // Make sure all elements in Left is <= those in Right. So a[i-1] <= b[j] and b[j-1] <= a[i].
