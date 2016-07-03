@@ -1,6 +1,6 @@
 class Solution {
 private:
-    struct StackEntry
+    class StackEntry
     {
         int i;
         int j;
@@ -10,7 +10,7 @@ private:
     {
         vector<vector<bool>> visited(m, vector<bool>(n,false));
         visited[ii][jj] = true;
-        stack<struct StackEntry> m_stack;
+        stack<StackEntry> m_stack;
         m_stack.push({ii,jj, 0});
         int len = word.size();
         int l = 1; //trying to match word[1] here.
