@@ -31,7 +31,6 @@ private:
         p->left = buildTreeRecursive(preorder, inorder, pre_start+1, in_start, len_left);
         int len_right = in_end-in_root;
         p->right = buildTreeRecursive(preorder, inorder, pre_start+1+len_left, in_root+1, len_right);
-        }
         return p;
     }
 public:
