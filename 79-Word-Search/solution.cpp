@@ -12,7 +12,7 @@ private:
         while(!m_stack.empty())
         {
             //probe all 4 directions
-            pair<pair<int,int>,int>& cur = m_stack.top();
+            pair<pair<int,int>,pair<int,int>>& cur = m_stack.top();
             int i = cur.first.first;
             int j = cur.first.second;
             if(cur.second >= 4)
