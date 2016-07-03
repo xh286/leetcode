@@ -1,6 +1,6 @@
 class Solution {
 private:
-    struct
+    struct s
     {
         int i;
         int j;
