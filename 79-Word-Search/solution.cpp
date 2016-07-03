@@ -5,10 +5,9 @@ private:
         int len = word.size();
         if(len == 1) return true;
         
-        vector<vector<bool>> visited(m, vector<bool>(n,false));
-        visited[ii][jj] = true;
-        stack<pair<pair<int,int>,int>> m_stack;
-        m_stack.push({{ii,jj},0});
+        stack<pair<pair<int,int>,pair<int,int>>> m_stack;
+        m_stack.push({{ii,jj},{0,board[ii][jj]});
+        board[ii][jj] = '\0';
         int l = 1; //trying to match word[1] here.
         while(!m_stack.empty())
         {
@@ -18,24 +17,24 @@ private:
             int j = cur.first.second;
             if(cur.second >= 4)
             {// all directions probed, failed to match word[l].
+                board[i][j] = m_stack.top().second.second;
                 m_stack.pop();
-                visited[i][j] = false;
                 l--;
                 continue;
             }
-            if(cur.second == 0)
+            if(cur.second.first == 0)
                 i = i-1;
-            else if(cur.second == 1)
+            else if(cur.second.first == 1)
                 j = j-1;
-            else if(cur.second == 2)
+            else if(cur.second.first == 2)
                 i = i+1;
-            else if(cur.second == 3)
+            else if(cur.second.first == 3)
                 j = j+1;
-            cur.second++;
+            cur.second.first++;
             if(i>=0 && i<m && j>=0 && j<n && !visited[i][j] && board[i][j] == word[l])
             {
-                m_stack.push({{i,j},0});
-                visited[i][j] = true;
+                m_stack.push({{i,j},{0,board[i][j]});
+                board[i][j] = '\0';
                 l++;
                 if(l==len) return true;
             }
