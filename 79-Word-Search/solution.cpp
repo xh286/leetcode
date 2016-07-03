@@ -1,16 +1,16 @@
 class Solution {
 private:
-    struct s
+    struct StackEntry
     {
         int i;
         int j;
         int dir_probed;
-    }StackEntry;
+    };
     bool matched(vector<vector<char>>& board, int m, int n, int ii, int jj, string word)
     {
         vector<vector<bool>> visited(m, vector<bool>(n,false));
         visited[ii][jj] = true;
-        stack<StackEntry> m_stack;
+        stack<struct StackEntry> m_stack;
         m_stack.push({ii,jj, 0});
         int len = word.size();
         int l = 1; //trying to match word[1] here.
