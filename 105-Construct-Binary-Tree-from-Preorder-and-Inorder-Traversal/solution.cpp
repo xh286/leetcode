@@ -12,7 +12,7 @@ private:
     int locateNode(int val, vector<int>& vec, int start, int end) // search val in vec[start...end], inclusive
     {
         int idx = -1;
-        for(int i = start, i <= end; i++)
+        for(int i = start; i <= end; i++)
             if(vec[i] == val) idx = i;
         return idx;
     }
