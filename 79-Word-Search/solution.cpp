@@ -1,16 +1,10 @@
 class Solution {
 private:
-    class StackEntry
-    {
-        int i;
-        int j;
-        int dir_probed;
-    };
     bool matched(vector<vector<char>>& board, int m, int n, int ii, int jj, string word)
     {
         vector<vector<bool>> visited(m, vector<bool>(n,false));
         visited[ii][jj] = true;
-        stack<StackEntry> m_stack;
+        stack<pair<pair<int,int>,int>> m_stack;
         m_stack.push({ii,jj,0});
         int len = word.size();
         int l = 1; //trying to match word[1] here.
@@ -19,9 +13,9 @@ private:
             if(l==len) return true;
             //probe all 4 directions
             auto cur = m_stack.top();
-            int i = cur.i;
-            int j = cur.j;
-            switch(cur.dir_probed)
+            int i = cur.first.first;
+            int j = cur.first.second;
+            switch(cur.second)
             {
                 case 0: i = i-1; break;
                 case 1: j = j+1; break;
@@ -31,14 +25,14 @@ private:
                         
                 default: // error case
             }
-            if(cur.dir_probed == 4)
+            if(cur.second == 4)
             {// all directions probed, failed to match word[l].
                 visited[i][j] = false;
                 m_stack.pop();
                 l--;
                 continue;
             }
-            cur.dir_probed++;
+            cur.second++;
             if(i>=0 && i<m && j>=0 && j<n && !visited[i][j] && board[i][j] == word[l])
             {
                 m_stack.push({i,j,0});
