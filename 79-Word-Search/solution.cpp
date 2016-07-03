@@ -2,19 +2,27 @@ class Solution {
 private:
     bool matched(vector<vector<char>>& board, int m, int n, int ii, int jj, string word)
     {
+        int len = word.size();
+        if(len == 1) return true;
+        
         vector<vector<bool>> visited(m, vector<bool>(n,false));
         visited[ii][jj] = true;
         stack<pair<pair<int,int>,int>> m_stack;
         m_stack.push({{ii,jj},0});
-        int len = word.size();
         int l = 1; //trying to match word[1] here.
         while(!m_stack.empty())
         {
-            if(l==len) return true;
             //probe all 4 directions
             auto cur = m_stack.top();
             int i = cur.first.first;
             int j = cur.first.second;
+            if(cur.second >= 4)
+            {// all directions probed, failed to match word[l].
+                m_stack.pop();
+                visited[i][j] = false;
+                l--;
+                continue;
+            }
             if(cur.second == 0)
                 i = i-1;
             else if(cur.second == 1)
@@ -23,22 +31,13 @@ private:
                 i = i+1;
             else if(cur.second == 3)
                 j = j+1;
-            else
-            {// all directions probed, failed to match word[l].
-                m_stack.pop();
-                visited[i][j] = false;
-                l--;
-                continue;
-            }
-            // probing
+            cur.second++;
+            if(i>=0 && i<m && j>=0 && j<n && !visited[i][j] && board[i][j] == word[l])
             {
-                cur.second++;
-                if(i>=0 && i<m && j>=0 && j<n && !visited[i][j] && board[i][j] == word[l])
-                {
-                    m_stack.push({{i,j},0});
-                    visited[i][j] = true;
-                    l++;
-                }
+                m_stack.push({{i,j},0});
+                visited[i][j] = true;
+                l++;
+                if(l==len) return true;
             }
         }
         assert(l==0);
