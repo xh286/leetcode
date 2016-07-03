@@ -31,7 +31,7 @@ private:
             else if(cur.second.first == 3)
                 j = j+1;
             cur.second.first++;
-            if(i>=0 && i<m && j>=0 && j<n && !visited[i][j] && board[i][j] == word[l])
+            if(i>=0 && i<m && j>=0 && j<n && board[i][j] == word[l])
             {
                 m_stack.push({{i,j},{0,board[i][j]}});
                 board[i][j] = '\0';
