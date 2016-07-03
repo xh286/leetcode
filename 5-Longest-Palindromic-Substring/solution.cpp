@@ -14,10 +14,7 @@ public:
         for(int i=1; i<= n-2; i++)
         {
             int j = 1;
-            while(i-j>=0 && i+j<n && s[i-j] == s[i+j])
-            {
-                    j++;
-            }
+            while(i-j>=0 && i+j<n && s[i-j] == s[i+j]) j++;
             j--;
             if(j*2+1 > max_len)
             {
@@ -32,10 +29,7 @@ public:
             if(s[i] == s[i+1])
             {
                 int j = 1;
-                while(i-j>=0 && i+1+j<n && s[i-j] == s[i+1+j])
-                {
-                        j++;
-                }
+                while(i-j>=0 && i+1+j<n && s[i-j] == s[i+1+j]) j++;
                 j--;
                 if(j*2+2 > max_len)
                 {
