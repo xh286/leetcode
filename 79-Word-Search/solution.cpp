@@ -15,7 +15,7 @@ private:
             pair<pair<int,int>,pair<int,int>>& cur = m_stack.top();
             int i = cur.first.first;
             int j = cur.first.second;
-            if(cur.second >= 4)
+            if(cur.second.first >= 4)
             {// all directions probed, failed to match word[l].
                 board[i][j] = m_stack.top().second.second;
                 m_stack.pop();
