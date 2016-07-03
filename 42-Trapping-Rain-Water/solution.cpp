@@ -13,7 +13,7 @@ public:
         int n = height.size();
         for(int i=0; i<n; i++)
         {
-            if(a[i] >= running_max)
+            if(height[i] >= running_max)
             {
                 while(!t_stack.empty())
                 {
@@ -21,8 +21,8 @@ public:
                     water += (running_max - val_count.first)*val_count.second;
                     t_stack.pop();
                 }
-                t_stack.push({a[i],1});
-                running_max = a[i];
+                t_stack.push({height[i],1});
+                running_max = height[i];
             }
             else // a[i] < running_max
             {
@@ -31,12 +31,12 @@ public:
                 {
                     // fill up to a[i] level
                     auto val_count = t_stack.top();
-                    if(a[i] < val_count.first) break;
-                    water += (a[i] - val_count.first)*val_count.second;
+                    if(height[i] < val_count.first) break;
+                    water += (height[i] - val_count.first)*val_count.second;
                     count += val_count.second;
                     t_stack.pop();
                 }
-                t_stack.push({a[i],count});
+                t_stack.push({height[i],count});
             }
         }
         return water;
