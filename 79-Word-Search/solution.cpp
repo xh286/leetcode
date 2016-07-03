@@ -5,7 +5,7 @@ private:
         vector<vector<bool>> visited(m, vector<bool>(n,false));
         visited[ii][jj] = true;
         stack<pair<pair<int,int>,int>> m_stack;
-        m_stack.push({ii,jj,0});
+        m_stack.push({{ii,jj},0});
         int len = word.size();
         int l = 1; //trying to match word[1] here.
         while(!m_stack.empty())
@@ -35,7 +35,7 @@ private:
             cur.second++;
             if(i>=0 && i<m && j>=0 && j<n && !visited[i][j] && board[i][j] == word[l])
             {
-                m_stack.push({i,j,0});
+                m_stack.push({{i,j},0});
                 visited[i][j] = true;
                 l++;
             }
