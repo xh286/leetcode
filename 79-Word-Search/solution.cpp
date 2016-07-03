@@ -15,26 +15,30 @@ private:
             auto cur = m_stack.top();
             int i = cur.first.first;
             int j = cur.first.second;
-            switch(cur.second){
-                case 0: i = i-1; break;
-                case 1: j = j+1; break;
-                case 2: i = i+1; break;
-                case 3: j = j-1; break;
-
-            }
-            if(cur.second == 4)
+            if(cur.second == 0)
+                i = i-1;
+            else if(cur.second == 1)
+                j = j-1;
+            else if(cur.second == 2)
+                i = i+1;
+            else if(cur.second == 3)
+                j = j+1;
+            else
             {// all directions probed, failed to match word[l].
-                visited[i][j] = false;
                 m_stack.pop();
+                visited[i][j] = false;
                 l--;
                 continue;
             }
-            cur.second++;
-            if(i>=0 && i<m && j>=0 && j<n && !visited[i][j] && board[i][j] == word[l])
+            // probing
             {
-                m_stack.push({{i,j},0});
-                visited[i][j] = true;
-                l++;
+                cur.second++;
+                if(i>=0 && i<m && j>=0 && j<n && !visited[i][j] && board[i][j] == word[l])
+                {
+                    m_stack.push({{i,j},0});
+                    visited[i][j] = true;
+                    l++;
+                }
             }
         }
         assert(l==0);
