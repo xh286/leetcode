@@ -6,7 +6,7 @@ private:
         if(len == 1) return true;
         
         stack<pair<pair<int,int>,pair<int,int>>> m_stack;
-        m_stack.push({{ii,jj},{0,board[ii][jj]});
+        m_stack.push({{ii,jj},{0,board[ii][jj]}});
         board[ii][jj] = '\0';
         int l = 1; //trying to match word[1] here.
         while(!m_stack.empty())
@@ -33,7 +33,7 @@ private:
             cur.second.first++;
             if(i>=0 && i<m && j>=0 && j<n && !visited[i][j] && board[i][j] == word[l])
             {
-                m_stack.push({{i,j},{0,board[i][j]});
+                m_stack.push({{i,j},{0,board[i][j]}});
                 board[i][j] = '\0';
                 l++;
                 if(l==len) return true;
