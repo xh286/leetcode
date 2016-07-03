@@ -15,8 +15,7 @@ private:
             auto cur = m_stack.top();
             int i = cur.first.first;
             int j = cur.first.second;
-            switch(cur.second)
-            {
+            switch(cur.second){
                 case 0: i = i-1; break;
                 case 1: j = j+1; break;
                 case 2: i = i+1; break;
