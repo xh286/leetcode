@@ -20,8 +20,7 @@ private:
                 case 1: j = j+1; break;
                 case 2: i = i+1; break;
                 case 3: j = j-1; break;
-                case 4: 
-                default: // error case
+
             }
             if(cur.second == 4)
             {// all directions probed, failed to match word[l].
