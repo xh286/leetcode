@@ -14,6 +14,6 @@ public:
             maxsumi += nums[i];
             if(maxsumi > max_sum) max_sum = maxsumi;  
         }
-        return maxsum;
+        return max_sum;
     }
 };
