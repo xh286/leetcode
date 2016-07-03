@@ -11,7 +11,7 @@ private:
         vector<vector<bool>> visited(m, vector<bool>(n,false));
         visited[ii][jj] = true;
         stack<StackEntry> m_stack;
-        m_stack.push({ii,jj, 0});
+        m_stack.push({ii,jj,0});
         int len = word.size();
         int l = 1; //trying to match word[1] here.
         while(!m_stack.empty())
