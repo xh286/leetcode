@@ -33,6 +33,7 @@ public:
             for(int j=i+1; j<n-1; j++) // t2
             {
                 int partial_sum = nums[i] + nums[j];
+                int sum;
                 int idx = findIndexNoGreater(nums,j+1,n-1,target - partial_sum);
                 // prob next if idx valid
                 if(idx>=j+1 && idx<n-1) 
