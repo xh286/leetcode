@@ -17,8 +17,6 @@ private:
         {
             if(p->val == sum)
                 r.push_back(path);
-            path.pop_back();
-            return;
         }
         if(p->left) dfs_pathSum(p->left, r, path, sum-p->val);
         if(p->right) dfs_pathSum(p->right, r, path, sum-p->val);
