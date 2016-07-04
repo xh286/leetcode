@@ -1,4 +1,18 @@
 class Solution {
+private:
+    void unique_insert(vector<vector<int>>& r, int a, int b, int c)
+    {
+        int n = r.size();
+        for(int i = 0; i < n; i++)
+        {
+            if(r[i][0] == a && r[i][1] == b && r[i][2] == c)
+                return;
+        }
+        r.push_back(vector<int>());
+        r.back().push_back(a);
+        r.back().push_back(b);
+        r.back().push_back(c);
+    }
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
         vector<vector<int>> r;
@@ -19,12 +33,8 @@ public:
                 else if(sum > target) k--;
                 else // hit
                 {
-                    r.push_back(vector<int>());
-                    r.back().push_back(nums[i]);
-                    r.back().push_back(nums[j]);
-                    r.back().push_back(nums[k]);
-                    while(j<k && nums[j+1] == nums[j]) j++;
-                    while(j<k && nums[k-1] == nums[k]) k--;
+                    unique_insert(r, nums[i], nums[j], nums[k]);
+                    j++; k--; // move on. If j++, k doesn't change, and hit again, then must be duplicate. So k--;
                 }
             }
         }
