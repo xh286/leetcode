@@ -6,8 +6,8 @@ public:
         // If x multiple, return x, otherwise, one of left and right satisfy occurence > set size.
         int n = nums.size() - 1;
         // handle invalid cases...
-        if(n==-1) return 0;
-        if(n==0) return nums[0];
+        //if(n==-1) return 0;
+        //if(n==0) return nums[0];
         int low = 1;
         int high = n;
         int total_set_count = n + 1;
@@ -43,6 +43,6 @@ public:
                 total_set_count = right_set_size;
             }
         }
-        return 0;
+        //return 0;
     }
 };
