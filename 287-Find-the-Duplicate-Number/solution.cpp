@@ -36,6 +36,7 @@ public:
             {
                 high = mid - 1;
                 total_set_count = left_set_size;
+            }
             else// if(right_set_count>right_set_size)
             {
                 low = mid + 1;
