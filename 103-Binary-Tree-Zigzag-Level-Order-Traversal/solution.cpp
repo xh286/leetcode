@@ -14,55 +14,36 @@ public:
         vector<vector<int>> r;
         deque<TreeNode*> dq;
         if(!root) return r;
-        int to_pop;
         dq.push_back(root);
-        to_pop = 1;
         int popped = 0;
         int level = 0;
-        int push_count = 0;
+        //int push_count = 0; don't need to count
         int dir = 1;
         while(true)
         {
+            int to_pop = dq.size();
             if(to_pop>0) r.push_back(vector<int>());
             else break;
             for(int popped = 0; popped < to_pop; popped++)
             {
+                TreeNode* p;
                 if(dir == 1)
                 {
-                TreeNode* p = dq.front();
-                dq.pop_front();
-                r[level].push_back(p->val);
-                if(p->left)
-                {
-                    dq.push_back(p->left);
-                    push_count++;
-                }
-                if(p->right)
-                {
-                    dq.push_back(p->right);
-                    push_count++;
-                }
+                    p = dq.front();
+                    dq.pop_front();
+                    if(p->left) dq.push_back(p->left);
+                    if(p->right) dq.push_back(p->right);
                 }
                 else
                 {
-                TreeNode* p = dq.back();
-                dq.pop_back();
+                    p = dq.back();
+                    dq.pop_back();
+                    if(p->right) dq.push_front(p->right);
+                    if(p->left) dq.push_front(p->left);
+                }
                 r[level].push_back(p->val);
-                if(p->right)
-                {
-                    dq.push_front(p->right);
-                    push_count++;
-                }
-                if(p->left)
-                {
-                    dq.push_front(p->left);
-                    push_count++;
-                }
-                }
             }
             // One level done
-            to_pop = push_count;
-            push_count = 0;
             level++;
             dir *= -1;
         }
