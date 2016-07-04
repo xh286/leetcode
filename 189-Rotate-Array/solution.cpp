@@ -16,7 +16,7 @@ public:
         int val_to_write = nums[start];
         while(c<n)
         {
-            dest = (src+k)%n;
+            int dest = (src+k)%n;
             int temp = nums[dest];
             nums[dest] = val_to_write;
             val_to_write = temp;
