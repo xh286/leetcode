@@ -28,7 +28,7 @@ public:
         while(bits_left > 0)
         {
             bits_left -= 2;
-            pi = (pi << 2) | ((x >> bits_left) & 0x3);
+            pi = (pi << 2) + ((x >> bits_left) & 0x3);
             int new_part = (pr << 2) | 1; // 4*pr+1
             if(new_part > pi)
             {
