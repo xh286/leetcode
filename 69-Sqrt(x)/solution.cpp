@@ -37,7 +37,7 @@ public:
             }
             else
             {
-                pr = (pr << 1) | 1;
+                pr = (pr << 1) + 1;
                 pi -= new_part;
             }
         }
