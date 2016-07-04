@@ -28,8 +28,8 @@ public:
         while(bits_left > 0)
         {
             bits_left -= 2;
-            pi = (pi << 2) + ((x >> bits_left) & 0x3);
-            int new_part = (pr << 2) + 1; // 4*pr+1
+            pi = (pi << 2) | ((x >> bits_left) & 0x3);
+            int new_part = (pr << 2) | 1; // 4*pr+1
             if(new_part > pi)
             {
                 // new bit is zero
@@ -37,7 +37,7 @@ public:
             }
             else
             {
-                pr = (pr << 1) + 1;
+                pr = (pr << 1) | 1;
                 pi -= new_part;
             }
         }
