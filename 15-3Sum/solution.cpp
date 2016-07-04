@@ -19,7 +19,10 @@ public:
                 else if(sum > target) k--;
                 else // hit
                 {
-                    r.push_back({i,j,k});
+                    r.push_back(vector<int>());
+                    r.back().push_back(i);
+                    r.back().push_back(j);
+                    r.back().push_back(k);
                 }
             }
         }
