@@ -17,7 +17,7 @@ public:
         if(root->left && root->right)
         {
             TreeLinkNode* p = root->left;
-            TreeLinkNode* p = root->right;
+            TreeLinkNode* q = root->right;
             p->next = q;
             while(p->right && q->left)
             {
