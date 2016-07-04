@@ -36,7 +36,7 @@ public:
                     while(j<k && nums[k] == c) k--;
                 }
             }
-            while(i<n-2 && nums[i+1] == a) i++;
+            while(i<n-2 && nums[i+1] == a) i++; // this one not so straightforward. Example: [-1, -1, 0, 1, 2], [0, 0, 0, 1, 2].
         }
         return r;
     }
