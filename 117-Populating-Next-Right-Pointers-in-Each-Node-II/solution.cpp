@@ -15,24 +15,20 @@ private:
     TreeLinkNode* findRightmostAtLevel(TreeLinkNode *p, int level) // return NULL if not found. level>=0
     {
         if(!p) return NULL; // level 0? root is considered level 0
-        if(p && (level==0)) return p;
-        if(level>0)
-        {
-            TreeLinkNode* p_from_right = findRightmostAtLevel(p->right, level-1);
-            if(p_from_right) return p_from_right;
-            return findRightmostAtLevel(p->left, level-1);
-        }
+        if(level==0) return p;
+        // level > 0
+        TreeLinkNode* p_from_right = findRightmostAtLevel(p->right, level-1);
+        if(p_from_right) return p_from_right;
+        return findRightmostAtLevel(p->left, level-1);
     }
     TreeLinkNode* findLeftmostAtLevel(TreeLinkNode *p, int level) // return NULL if not found. level>=0
     {
         if(!p) return NULL; // level 0? root is considered level 0
-        if(p && (level==0)) return p;
-        if(level>0)
-        {
-            TreeLinkNode* p_from_left = findLeftmostAtLevel(p->left, level-1);
-            if(p_from_left) return p_from_left;
-            return findLeftmostAtLevel(p->right, level-1);
-        }
+        if(level==0) return p;
+        //level>0
+        TreeLinkNode* p_from_left = findLeftmostAtLevel(p->left, level-1);
+        if(p_from_left) return p_from_left;
+        return findLeftmostAtLevel(p->right, level-1);
     }
 public:
     void connect(TreeLinkNode *root) {
