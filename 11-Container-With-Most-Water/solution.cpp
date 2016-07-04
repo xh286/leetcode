@@ -7,17 +7,16 @@ public:
         // So, probably faster than n^2. Worst case is: 1,2,3,...k,...3,2,1.
         // But looking at this we see that any <= need to be skipped.
         int n = height.size();
-        int max_area = 0;
+        int water = 0;
         int low = 0;
         int high = n-1;
         while(low<high)
         {
             int h = min(height[low],height[high]);
-            int area = (high-low)*h;
-            if(area>max_area) max_area = area;
+            water = max(water,(high-low)*h);
             while(low<high && height[low]<=h) low++;
             while(low<high && height[high]<=h) high--;
         }
-        return max_area;
+        return water;
     }
 };
