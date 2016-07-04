@@ -20,6 +20,7 @@ public:
                 if(nums[mid]>nums[low]) low = mid; // mid cannot be begin
                 else if(nums[mid]<nums[high]) high = mid; // 
             }
+            // reduced to 2 points here, low points to bigger value, high to smaller value.
             begin = high;
             assert(nums[begin-1]>nums[begin]);
             // Got begin
