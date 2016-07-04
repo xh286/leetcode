@@ -40,6 +40,7 @@ public:
             {
                 low = mid + 1;
                 total_set_count = right_set_size;
+            }
         }
         return 0;
     }
