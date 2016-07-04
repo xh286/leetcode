@@ -13,11 +13,10 @@ public:
             int k = n-1;
             while(j<k)
             {
-                sum2 = nums[i]+nums[j];
-                sum = sum2 + 
+                int sum2 = nums[j]+nums[k];
                 if(abs(target_2sum-sum2)<abs(best_sum-target)) best_sum = sum2 + nums[i];
-                if(sum2 < target)   j++;
-                else if(sum2 > target) k--;
+                if(sum2 < target_2sum)   j++;
+                else if(sum2 > target_2sum) k--;
                 else // equal
                     return target;
             }
