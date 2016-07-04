@@ -20,9 +20,11 @@ public:
                 else // hit
                 {
                     r.push_back(vector<int>());
-                    r.back().push_back(i);
-                    r.back().push_back(j);
-                    r.back().push_back(k);
+                    r.back().push_back(nums[i]);
+                    r.back().push_back(nums[j]);
+                    r.back().push_back(nums[k]);
+                    while(j<k && nums[j+1] == nums[j]) j++;
+                    while(j<k && nums[k-1] == nums[k]) k--;
                 }
             }
         }
