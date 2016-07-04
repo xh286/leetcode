@@ -48,7 +48,7 @@ public:
             {
                 TreeLinkNode* p = findRightmostAtLevel(root->left, level);
                 TreeLinkNode* q = findLeftmostAtLevel(root->right, level);
-                if(p && q) {p->next = right; level++}
+                if(p && q) {p->next = q; level++}
                 else break;
             }
         }
