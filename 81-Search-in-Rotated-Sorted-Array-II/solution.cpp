@@ -22,7 +22,8 @@ private:
                 assert(nums[mid] == nums[high]);
                 // Linear search for nums[i] low...high that's not same as nums[low].
                 // If first different entry is smaller, then it's begin. If larger, then set it to low
-                for(int i=low; i<=high; i++)
+                int i=low;
+                for(; i<=high; i++)
                 {
                     if(nums[i] < nums[low])
                         return i;
@@ -31,6 +32,8 @@ private:
                         low = i; break;
                     }
                 }
+                if(i>high) // flat array
+                    return 0;
             }
         }
         return high;
