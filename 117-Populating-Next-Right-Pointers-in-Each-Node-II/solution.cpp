@@ -8,10 +8,6 @@
  */
 class Solution {
 private:
-    bool isleaf(TreeLinkNode *p) // p not NULL
-    {
-        return (!p->left && !p->right);
-    }
     TreeLinkNode* findRightmostAtLevel(TreeLinkNode *p, int level) // return NULL if not found. level>=0
     {
         if(!p) return NULL; // level 0? root is considered level 0
