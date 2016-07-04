@@ -1,13 +1,46 @@
 class Solution {
 public:
     int findDuplicate(vector<int>& nums) {
-        // Cannot sort. Note 4 is actually hint. I missed it.
-        // Simple case is duplicated number appeared twice, then all numbers 1 - n are present in the array. Just add up all numbers, then subtract n(n+1)/2.
-        // More complex case is duplicate number appeared three times, then a number is missing. This missing number can be found with the xor trick (array, plus 1 - n). The xor result is the missing number. Add it back, then becomes complete. Add up all numbers, subtract n(n+1)/2, then divide by 2.
-        // If appeared four times, then 2 numbers missing. The xor result is the xor of the two missing numbers and the duplicate number. Cannot solve anymore.
-        // The sum is not very effective. Example: 1 - 100, and all entries are 1, or 100. So the sum can have wide range.
-        // What makes the duplicate number so special? Let's try the hash set route. Anyway to make it constant space? O(n) time, O(n) space.
-        // Try the sort based method. binary search. The time complexity is very relaxed. That's a hint!
-        
+        // Emuerate simple cases, we find binary search is viable.
+        // Divide n range into left, x, right, 3 parts, and count occurence of each set.
+        // If x multiple, return x, otherwise, one of left and right satisfy occurence > set size.
+        int n = nums.size() - 1;
+        // handle invalid cases...
+        if(n==-1) return 0;
+        if(n==0) return nums[0];
+        int low = 1;
+        int high = n;
+        int total_set_count = n + 1;
+        while(low<=high)
+        {
+            int mid=low+(high-low)/2;
+            int left_set_size = mid-low;
+            int right_set_size = high-low;
+            //int mid_set_size = 1;
+            int left_set_count = 0;
+            int mid_set_count = 0;
+            int right_set_count = 0;
+            for(int i=0; i<=n; i++)
+            {
+                if(nums[i]>=low && nums[i]<mid)
+                    left_set_count++;
+                else if(nums[i] == mid)
+                    mid_set_count++;
+                //else if(nums[i]>mid && nums[i]<=high)
+                //    right_set_count++;
+            }
+            
+            if(mid_set_count > 1) return mid;
+            right_set_count = total_set_count - left_set_count - mid_set_count;
+            if(left_set_count>left_set_size)
+            {
+                high = mid - 1;
+                total_set_count = left_set_size;
+            else// if(right_set_count>right_set_size)
+            {
+                low = mid + 1;
+                total_set_count = right_set_size;
+        }
+        return 0;
     }
 };
