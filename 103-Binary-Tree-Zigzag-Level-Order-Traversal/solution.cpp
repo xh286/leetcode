@@ -14,9 +14,9 @@ public:
         vector<vector<int>> r;
         deque<TreeNode*> dq;
         if(!root) return r;
-        int to_pop = 0;
+        int to_pop;
         dq.push_back(root);
-        to_pop++;
+        to_pop = 1;
         int popped = 0;
         int level = 0;
         int push_count = 0;
@@ -24,14 +24,14 @@ public:
         while(true)
         {
             if(to_pop>0) r.push_back(vector<int>());
-            while(popped < to_pop)
+            else break;
+            for(int popped = 0; popped < to_pop; popped++)
             {
                 if(dir == 1)
                 {
                 TreeNode* p = dq.front();
                 dq.pop_front();
                 r[level].push_back(p->val);
-                popped++;
                 if(p->left)
                 {
                     dq.push_back(p->left);
@@ -48,7 +48,6 @@ public:
                 TreeNode* p = dq.back();
                 dq.pop_back();
                 r[level].push_back(p->val);
-                popped++;
                 if(p->right)
                 {
                     dq.push_front(p->right);
@@ -64,9 +63,9 @@ public:
             // One level done
             to_pop = push_count;
             push_count = 0;
-            if(to_pop == 0) break;
             level++;
             dir *= -1;
         }
+        return r;
     }
 };
