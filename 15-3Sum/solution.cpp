@@ -1,17 +1,12 @@
 class Solution {
 private:
-    void unique_insert(vector<vector<int>>& r, int a, int b, int c)
+    void insert_triplet(vector<vector<int>>& r, int a, int b, int c)
     {
-        int n = r.size();
-        for(int i = 0; i < n; i++)
-        {
-            if(r[i][0] == a && r[i][1] == b && r[i][2] == c)
-                return;
-        }
-        r.push_back(vector<int>());
-        r.back().push_back(a);
-        r.back().push_back(b);
-        r.back().push_back(c);
+        vector<int> triplet(3,0);
+        triplet[0] = a;
+        triplet[1] = b;
+        triplet[2] = c;
+        r.push_back(triplet);
     }
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
@@ -23,7 +18,8 @@ public:
         // Require that t1<=t2<=t3.
         for(int i=0; i<n-2; i++)
         {
-            int target = -nums[i];
+            int a = nums[i];
+            int target = -a;
             int j = i + 1;
             int k = n - 1;
             while(j<k)
@@ -33,10 +29,14 @@ public:
                 else if(sum > target) k--;
                 else // hit
                 {
-                    unique_insert(r, nums[i], nums[j], nums[k]);
-                    j++; k--; // move on. If j++, k doesn't change, and hit again, then must be duplicate. So k--;
+                    int b = nums[j];
+                    int c = nums[k];
+                    insert_triplet(r, a, b, c);
+                    while(j<k && nums[j] == b) j++;
+                    while(j<k && nums[k] == c) k--;
                 }
             }
+            while(i<n-2 && nums[i+1] == a) i++;
         }
         return r;
     }
