@@ -19,7 +19,7 @@ public:
         while(tx) // could use built-in clz.
         {
             bit_count++;
-            bx >>= 1;
+            tx >>= 1;
         }
         int bits_left = bit_count - 2 + (bit_count & 0x1);
         int pi = x >> bits_left; // partial input
@@ -28,8 +28,8 @@ public:
         while(bits_left > 0)
         {
             bits_left -= 2;
-            pi = (pi << 2) + ((x >> bits_left) & 0x3);
-            int new_part = pr << 2 + 1; // 4*pr+1
+            pi = (pi << 2) | ((x >> bits_left) & 0x3);
+            int new_part = (pr << 2) | 1; // 4*pr+1
             if(new_part > pi)
             {
                 // new bit is zero
