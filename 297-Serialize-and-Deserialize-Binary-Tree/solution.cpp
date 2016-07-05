@@ -54,9 +54,8 @@ public:
         TreeNode* root = NULL;
         bool first_node = true;
         queue<TreeNode**> q;
-        while(s) // in each loop, read in one pair of val+mask, and set previous pointer to this one.
+        while(s>>val) // in each loop, read in one pair of val+mask, and set previous pointer to this one.
         {
-            s >> val;
             s >> left_right_mask;
             TreeNode* p = new TreeNode(val);
             
