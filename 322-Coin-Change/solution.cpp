@@ -12,7 +12,6 @@ public:
         std::sort(coins.begin(), coins.end()); // sort coins in ascending order
         vector<int> ncoins(amount+1,INT_MAX); // complexity amount*coins
         ncoins[0] = 0;
-        int 
         for(int i=1; i<=amount, i++) // calculate min # coins for each amount
             for(int j=0; j<m; j++)
             {
