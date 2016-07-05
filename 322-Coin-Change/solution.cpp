@@ -10,13 +10,20 @@ public:
         int m = coins.size();
         if(m==0) return -1;
         std::sort(coins.begin(), coins.end()); // sort coins in ascending order
-        vector<int> ncoins(amount+1,INT_MAX); // complexity amount*coins
+        vector<int> ncoins(amount+1,-1); // complexity amount*coins
         ncoins[0] = 0;
-        for(int i=1; i<=amount, i++) // calculate min # coins for each amount
+        for(int i=1; i<=amount; i++) // calculate min # coins for each amount
             for(int j=0; j<m; j++)
             {
-                if(amount>=coins[j]) // check = later
-                    ncoins[i] = std::min(ncoins[amount-coins[j]]+1, ncoins[i]);
+                if(i>=coins[j])
+                {
+                    int pre = ncoins[i-coins[j]];
+                    if(pre!=-1)
+                    {
+                        if((ncoins[i] == -1) || (pre+1 < ncoins[i]))
+                            ncoins[i] = pre+1;
+                    }
+                }
                 else
                     break;
             }
