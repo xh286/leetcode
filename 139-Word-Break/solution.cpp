@@ -4,7 +4,8 @@ public:
         for(auto it=s.begin(); it!=s.end(); it++)
         {
             string t(s.begin(), it+1);
-            if(wordDict.find(t)!=wordDict.end() && wordBreak(string(it+1,s.end()),wordDict))) 
+            if(wordDict.find(t)!=wordDict.end())
+                if(wordBreak(string(it+1,s.end()),wordDict))
                 return true;
         }
     }
