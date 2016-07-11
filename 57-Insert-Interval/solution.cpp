@@ -30,6 +30,7 @@ public:
         int left = locate(intervals, start);
         int right = locate(intervals, end);
         bool left_hit = false;
+        bool right_hit = false;
         if(left < n)
             left_hit = (start >= intervals[left].start) && (start <= intervals[left].end);
         if(right < n)
