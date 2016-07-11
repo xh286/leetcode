@@ -25,8 +25,8 @@ private:
 public:
     vector<Interval> insert(vector<Interval>& intervals, Interval newInterval) {
         int n = intervals.size();
-        int start = newIntervals.start;
-        int end = newIntervals.end;
+        int start = newInterval.start;
+        int end = newInterval.end;
         int left = locate(intervals, start);
         int right = locate(intervals, end);
         bool left_hit = false;
