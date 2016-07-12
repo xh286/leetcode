@@ -10,6 +10,7 @@
 class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        if(!root) return NULL;
         vector<vector<TreeNode*>> res(2,vector<TreeNode*>());
         int idx = 0;
         vector<TreeNode*> trav_stack;
