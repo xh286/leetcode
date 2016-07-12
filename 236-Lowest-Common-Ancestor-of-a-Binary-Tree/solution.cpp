@@ -22,7 +22,7 @@ public:
             {
                 trav_stack.push_back(subtree);
                 if(subtree == p || subtree == q)
-                    res[idx++] == trav_stack;
+                    res[idx++] = trav_stack;
                 if(idx==2) break;
                 subtree = subtree->left;
                 continue;
