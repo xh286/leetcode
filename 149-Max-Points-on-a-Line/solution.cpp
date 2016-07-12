@@ -28,7 +28,7 @@ private:
             v_diff = -v_diff;
             h_diff = -h_diff;
         }
-        int gcd = findGCD(a,b);
+        int gcd = findGCD(v_diff, h_diff);
         int a = v_diff/gcd;
         int b = h_diff/gcd;
         int c = a*point1.x - b*point1.y;
