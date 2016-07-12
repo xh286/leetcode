@@ -44,8 +44,8 @@ public:
         }
         // path from root to p & q in res. Find last common node
         int max_len = min(res[0].size(), res[1].size());
-        int i;
-        for(i=1; i<max_len; i++) // first entries are root
+        int i=1;
+        for(; i<max_len; i++) // first entries are root
             if(res[0][i] != res[1][i]) break;
         return res[0][i-1];
     }
