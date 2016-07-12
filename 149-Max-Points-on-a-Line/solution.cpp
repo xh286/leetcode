@@ -9,6 +9,7 @@
  */
 class Solution {
 private:
+    using Line = tuple<int,int,int>; // ax-by=c, where GCD(a,b)==1, and a>=0. So (a,b,c) unique for given line.
     int findGCD(int a, int b)
     {
         a = abs(a);
@@ -36,7 +37,7 @@ private:
 public:
     int maxPoints(vector<Point>& points) {
         //O(n^2) solution using a hash map from (a,b,c) to count. 
-        using Line = tuple<int,int,int>; // ax-by=c, where GCD(a,b)==1, and a>=0. So (a,b,c) unique for given line.
+        
         unordered_map<Line,int> mp;
         int n = points.size();
         if(n<=2) return n;
