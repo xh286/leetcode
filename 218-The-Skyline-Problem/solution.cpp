@@ -27,12 +27,16 @@ private:
     void insertNewPoint(vector<pair<int,int>>& ret, map<int,int>& mp, int Loc)
     {
         int height = getMaxHeight(mp);
-        if(!ret.empty())
+        int n = ret.size();
+        if(n>0)
         {
-            if(height == ret.back().second) return;
-            if(Loc == ret.back().first)
+            if(height == ret[n-1].second) return;
+            if(Loc == ret[n-1].first)
             {
-                ret.back().second = height;
+                ret[n-1].second = height;
+                if(n>=2)
+                    if(ret[n-2].second == height)
+                        ret.pop_back();
                 return;
             }
         }
