@@ -27,10 +27,16 @@ private:
     void insertNewPoint(vector<pair<int,int>>& ret, map<int,int>& mp, int Loc)
     {
         int height = getMaxHeight(mp);
-        if(ret.empty() || height != ret.back().second)
+        if(!ret.empty())
         {
-            ret.push_back(make_pair(Loc, height));
+            if(height == ret.back().second) return;
+            if(Loc == ret.back().first)
+            {
+                ret.back().second = height;
+                return;
+            }
         }
+        ret.push_back(make_pair(Loc, height));
     }
 public:
     vector<pair<int, int>> getSkyline(vector<vector<int>>& buildings) {
@@ -51,8 +57,8 @@ public:
                     mp.erase(it);
                 else
                     break;
-                if(old_Ri < Li) // no need if equal, will be handled by insertion
-                    insertNewPoint(ret, old_Ri);
+                if(old_Ri < Li)
+                    insertNewPoint(ret, mp, old_Ri);
             }
             // Insert
             auto it = mp.find(Ri);
@@ -60,14 +66,14 @@ public:
                 it->second = max(it->second,Hi);
             else
                 mp[Ri] = Hi;
-            insertNewPoint(ret, Li);
+            insertNewPoint(ret, mp, Li);
         }
         while(!mp.empty())
         {
             auto it = mp.begin();
             int old_Ri = it->first;
             mp.erase(it);
-            insertNewPoint(ret, old_Ri);
+            insertNewPoint(ret, mp, old_Ri);
         }
         return ret;
     }
