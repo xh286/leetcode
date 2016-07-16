@@ -4,7 +4,7 @@ int row;
 int count;
 int max_count;
 vector<int> lengths;
-vector<vector<int>&> storage;
+vector<vector<int>> storage;
 public:
     ZigzagIterator(vector<int>& v1, vector<int>& v2) {
         lengths.push_back(v1.size());
