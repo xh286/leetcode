@@ -48,7 +48,7 @@ public:
                 auto it = mp.begin();
                 int old_Ri = it->first;
                 if(old_Ri <= Li) // previous range falls out
-                    map.erase(it);
+                    mp.erase(it);
                 else
                     break;
                 if(old_Ri < Li) // no need if equal, will be handled by insertion
@@ -66,7 +66,7 @@ public:
         {
             auto it = mp.begin();
             int old_Ri = it->first;
-            map.erase(it);
+            mp.erase(it);
             insertNewPoint(ret, old_Ri);
         }
         return ret;
