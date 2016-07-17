@@ -6,9 +6,9 @@ private:
     int m;
     int n;
     bool game_over;
-    bool newPosInvalid(int row, int col)
+    bool newPosValid(int row, int col)
     {
-        return(row>=0 && row<m && col>=0 && col<n);
+        return (row>=0 && row<m && col>=0 && col<n);
     }
     void fillHead(int row, int col)
     {
@@ -58,7 +58,7 @@ public:
             case 'R': col++; break;
             default: game_over=true; return -1;
         }
-        if(newPosInvalid(row,col)){game_over=true; return -1;}
+        if(!newPosValid(row,col)){game_over=true; return -1;}
         if(!foods.empty())
         {
             auto food = foods.front();
