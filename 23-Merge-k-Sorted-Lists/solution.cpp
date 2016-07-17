@@ -75,15 +75,16 @@ public:
         while(mp.size()>=2)
         {
             auto it = mp.begin();
-            auto it2 = it+1;
-            int new_size = it->first + it2->first;
+            int size1 = it->first;
             int idx1 = it->second;
+            mp.erase(it);
+            it = mp.begin();
+            int size2 = it->first;
             int idx2 = it2->second;
+            mp.erase(it);
             int new_idx = min(idx1, idx2);
             lists[new_idx] = mergeTwoLists(lists[idx1], lists[idx2]);
-            mp.erase(it);
-            mp.erase(it2);
-            mp.insert(pair<int,int>(new_size,new_idx));
+            mp.insert(pair<int,int>(size1+size2,new_idx));
         }
         return lists[0];
     }
