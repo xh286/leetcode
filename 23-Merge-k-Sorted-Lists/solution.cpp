@@ -53,7 +53,7 @@ private:
             p_next = p->next;
             q = new_q;
         }
-        p->next = q;
+        if(!p_next) p->next = q;
         return host;
     }
     int getListSize(ListNode* list)
@@ -70,6 +70,7 @@ public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {
         multimap<int,int> mp;
         int K = lists.size();
+        if(K==0) return NULL;
         for(int i=0; i<K; i++)
             mp.insert(pair<int,int>(getListSize(lists[i]),i));
         while(mp.size()>=2)
