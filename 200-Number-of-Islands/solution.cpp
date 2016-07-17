@@ -14,7 +14,9 @@ public:
     int numIslands(vector<vector<char>>& grid) {
         vector<vector<char>> to_visit = grid;
         int m = to_visit.size();
+        if(m==0) return 0;
         int n = to_visit[0].size();
+        if(n==0) return 0;
         int num_islands = 0;
         for(int i=0; i<m; i++)
             for(int j=0; j<n; j++)
