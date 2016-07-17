@@ -2,6 +2,7 @@ class Solution {
     // simple answer is sort, then swap every pair other than first element.
     // Can we do it faster? For example O(n)?
     // Yes, just one-by-one.
+    // Be careful! if pairs with next else.
 public:
     void wiggleSort(vector<int>& nums) {
         int n = nums.size();
