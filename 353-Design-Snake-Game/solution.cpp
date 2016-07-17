@@ -10,7 +10,17 @@ private:
     {
         return(row>=0 && row<m && col>=0 && col<n);
     }
-
+    void fillHead(int row, int col)
+    {
+        occupied[row][col] = true;
+        snake.push({row,col});
+    }
+    void eraseTail()
+    {
+        auto tail = snake.front();
+        occupied[tail.first][tail.second] = false;
+        snake.pop();
+    }
 public:
     /** Initialize your data structure here.
         @param width - screen width
@@ -25,8 +35,7 @@ public:
         }
         else
         {
-            occupied[0][0] = true;
-            snake.push({0,0});
+            fillHead(0,0);
             for(auto it=food.begin(); it!=food.end();it++)
                 foods.push(*it);
         }
@@ -50,18 +59,18 @@ public:
             default: game_over=true; return -1;
         }
         if(newPosInvalid(row,col)){game_over=true; return -1;}
-        auto food = foods.front();
-        if(!(row==food.first && col==food.second))
+        if(!foods.empty())
         {
-            auto tail = snake.front();
-            occupied[tail.first][tail.second] = false;
-            snake.pop();
+            auto food = foods.front();
+            if(row==food.first && col==food.second) // eats food, tail stays
+                foods.pop();
+            else
+                eraseTail();
         }
         else
-            foods.pop();
+            eraseTail(); 
         if(occupied[row][col]){game_over=true; return -1;}
-        occupied[row][col] = true;
-        snake.push({row,col});
+        fillHead(row,col);
         return snake.size()-1;
     }
 };
