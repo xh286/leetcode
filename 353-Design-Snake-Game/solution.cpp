@@ -37,7 +37,7 @@ public:
         {
             fillHead(0,0);
             for(auto it=food.begin(); it!=food.end();it++)
-                foods.push(*it);
+                foods.push({it->first, it->second});
         }
     }
     
@@ -68,7 +68,7 @@ public:
                 eraseTail();
         }
         else
-            eraseTail(); 
+            eraseTail();
         if(occupied[row][col]){game_over=true; return -1;}
         fillHead(row,col);
         return snake.size()-1;
