@@ -75,7 +75,7 @@ public:
         while(mp.size()>=2)
         {
             auto it = mp.begin();
-            it2 = it+1;
+            auto it2 = it+1;
             int new_size = it->first + it2->first;
             int idx1 = it->second;
             int idx2 = it2->second;
