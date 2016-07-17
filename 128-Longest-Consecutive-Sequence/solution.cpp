@@ -107,3 +107,5 @@ public:
         return max_len;
     }
 };
+// Note: This problem is somehow similar to the findCelebrity. 
+// Think about the candidate that can be start of a streak. If x-1 exist, then it cannot be. Otherwise, check x+1,x+2, ...
