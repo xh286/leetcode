@@ -56,6 +56,7 @@ private:
         if(!p_next) p->next = q;
         return host;
     }
+    
     int getListSize(ListNode* list)
     {
         int count = 0;
@@ -66,6 +67,7 @@ private:
         }
         return count;
     }
+    
 public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {
         multimap<int,int> mp;
