@@ -89,7 +89,7 @@ private:
             int idx = it->second;
             int higher_end = vec[it2->second].second;
             vec[idx].second = higher_end;
-            mp[higher_end].second = it->second; // now both ends of new merged range point to same index in vec
+            mp[higher_end] = it->second; // now both ends of new merged range point to same index in vec
             mp.erase(it);
             mp.erase(it2);
             new_len = vec[idx].second-vec[idx].first+1;
