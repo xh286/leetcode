@@ -103,7 +103,7 @@ public:
         }
         int max_len = (nums.size()>0)?1:0;
         for(auto it=vec.begin(); it!=vec.end(); it++)
-            max_len = max(max_len, it->second - it->start + 1);
+            max_len = max(max_len, it->second - it->first + 1);
         return max_len;
     }
 };
