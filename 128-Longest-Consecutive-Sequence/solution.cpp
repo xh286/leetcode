@@ -113,7 +113,7 @@ public:
             else if(mpit!=mp.end() && mpit2==mp.end())
                 this_len = joinLower(mp, vec, mpit);
             else if(mpit==mp.end() && mpit2!=mp.end())
-                this_len = joinHigher(mp, vec, mpit2);
+                this_len = joinUpper(mp, vec, mpit2);
             else
                 mp[*it] = -1; // insert into map, and map to invalid index in vec
             max_len = max(max_len, this_len);
