@@ -24,7 +24,7 @@ private:
         // Join it->first+1 to the range/element ending at it->first
         if(it->second == -1) // element. Insert new range in vec, and let both start & end point to new range.
         {
-            vec.push_back(make_pair<int,int>(it->first, it->first+1));
+            vec.push_back({it->first, it->first+1});
             it->second = vec.size()-1;
             mp[it->first+1] = it->second;
             new_len = 2;
@@ -45,7 +45,7 @@ private:
         // Join it->first-1 to the range/element starting at it->first
         if(it->second == -1) // element. Insert new range in vec, and let both start & end point to new range.
         {
-            vec.push_back(make_pair<int,int>(it->first-1, it->first));
+            vec.push_back({it->first-1, it->first});
             it->second = vec.size()-1;
             mp[it->first-1] = it->second;
             new_len = 2;
@@ -65,7 +65,7 @@ private:
         int new_len;
         if(it->second == -1 && it2->second == -1) // create new range, point both to it.
         {
-            vec.push_back(make_pair<int,int>(it->first, it2->first));
+            vec.push_back({it->first, it2->first});
             it->second = vec.size()-1;
             it2->second = vec.size()-1;
             new_len = 3;
