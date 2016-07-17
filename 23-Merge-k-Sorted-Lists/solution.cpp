@@ -80,7 +80,7 @@ public:
             mp.erase(it);
             it = mp.begin();
             int size2 = it->first;
-            int idx2 = it2->second;
+            int idx2 = it->second;
             mp.erase(it);
             int new_idx = min(idx1, idx2);
             lists[new_idx] = mergeTwoLists(lists[idx1], lists[idx2]);
