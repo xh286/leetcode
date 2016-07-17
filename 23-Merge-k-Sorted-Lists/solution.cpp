@@ -61,7 +61,7 @@ public:
         multimap<int,int> mp;
         int K = lists.size();
         for(int i=0; i<K; i++)
-            mp.insert({lists[i].size(),i});
+            mp.insert(pair<int,int>(lists[i].size(),i));
         while(mp.size()>=2)
         {
             auto it = mp.begin();
@@ -73,7 +73,7 @@ public:
             lists[new_idx] = mergeTwoLists(lists[idx1], lists[idx2]);
             mp.erase(it);
             mp.erase(it2);
-            mp.insert({new_size,new_idx});
+            mp.insert(pair<int,int>(new_size,new_idx));
         }
         return lists[0];
     }
