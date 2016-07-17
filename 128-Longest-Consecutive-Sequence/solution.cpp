@@ -18,71 +18,59 @@ private:
         for(auto it=st.begin(); it!=st.end(); it++)
             a.push_back(*it);
     }
-    int joinLower(unordered_map<int, int>& mp, vector<pair<int,int>>& vec, unordered_map<int, int>::iterator it)
+    void joinLower(unordered_map<int, int>& mp, vector<pair<int,int>>& vec, unordered_map<int, int>::iterator it)
     {
-        int new_len;
         // Join it->first+1 to the range/element ending at it->first
         if(it->second == -1) // element. Insert new range in vec, and let both start & end point to new range.
         {
             vec.push_back({it->first, it->first+1});
             it->second = vec.size()-1;
             mp[it->first+1] = it->second;
-            new_len = 2;
         }
         else // merge into existing range. Replace upper end. Increment length by 1.
         {
             int idx = it->second;
             vec[idx].second++;
-            new_len = vec[idx].second-vec[idx].first+1;
             mp[it->first+1] = idx;
             mp.erase(it);
         }
-        return new_len;
     }
-    int joinUpper(unordered_map<int, int>& mp, vector<pair<int,int>>& vec, unordered_map<int, int>::iterator it)
+    void joinUpper(unordered_map<int, int>& mp, vector<pair<int,int>>& vec, unordered_map<int, int>::iterator it)
     {
-        int new_len;
         // Join it->first-1 to the range/element starting at it->first
         if(it->second == -1) // element. Insert new range in vec, and let both start & end point to new range.
         {
             vec.push_back({it->first-1, it->first});
             it->second = vec.size()-1;
             mp[it->first-1] = it->second;
-            new_len = 2;
         }
         else // merge into existing range. Replace upper end. Increment length by 1.
         {
             int idx = it->second;
             vec[idx].first--;
-            new_len = vec[idx].second-vec[idx].first+1;
             mp[it->first-1] = idx;
             mp.erase(it);
         }
-        return new_len;
     }
-    int joinBoth(unordered_map<int, int>& mp, vector<pair<int,int>>& vec, unordered_map<int, int>::iterator it, unordered_map<int, int>::iterator it2)
+    void joinBoth(unordered_map<int, int>& mp, vector<pair<int,int>>& vec, unordered_map<int, int>::iterator it, unordered_map<int, int>::iterator it2)
     {
-        int new_len;
         if(it->second == -1 && it2->second == -1) // create new range, point both to it.
         {
             vec.push_back({it->first, it2->first});
             it->second = vec.size()-1;
             it2->second = vec.size()-1;
-            new_len = 3;
         }
         else if(it->second == -1 && it2->second != -1)
         {
             int idx = it2->second;
             vec[idx].first -= 2;
             it->second = idx;
-            new_len = vec[idx].second-vec[idx].first+1;
         }
         else if(it->second != -1 && it2->second == -1)
         {
             int idx = it->second;
             vec[idx].second += 2;
             it2->second = idx;
-            new_len = vec[idx].second-vec[idx].first+1;
         }
         else // both sides are ranges, consolidate to lower range. Leave upper range in vec without ref.
         {
@@ -92,9 +80,7 @@ private:
             mp[higher_end] = it->second; // now both ends of new merged range point to same index in vec
             mp.erase(it);
             mp.erase(it2);
-            new_len = vec[idx].second-vec[idx].first+1;
         }
-        return new_len;
     }
 public:
     int longestConsecutive(vector<int>& nums) {
@@ -102,22 +88,22 @@ public:
         makeUnique(nums, a);
         vector<pair<int,int>> vec;
         unordered_map<int, int> mp;
-        int max_len = 0;
         for(auto it=a.begin(); it!=a.end(); it++)
         {
             auto mpit = mp.find(*it-1);
             auto mpit2 = mp.find(*it+1);
-            int this_len = 1;
             if(mpit!=mp.end() && mpit2!=mp.end())
-                this_len = joinBoth(mp, vec, mpit, mpit2);
+                joinBoth(mp, vec, mpit, mpit2);
             else if(mpit!=mp.end() && mpit2==mp.end())
-                this_len = joinLower(mp, vec, mpit);
+                joinLower(mp, vec, mpit);
             else if(mpit==mp.end() && mpit2!=mp.end())
-                this_len = joinUpper(mp, vec, mpit2);
+                joinUpper(mp, vec, mpit2);
             else
                 mp[*it] = -1; // insert into map, and map to invalid index in vec
-            max_len = max(max_len, this_len);
         }
+        int max_len = (nums.size()>0)?1:0;
+        for(auto it=vec.begin(); it!=vec.end(); it++)
+            max_len = max(max_len, it->second - it->start + 1);
         return max_len;
     }
 };
