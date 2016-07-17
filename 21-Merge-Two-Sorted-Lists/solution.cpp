@@ -13,10 +13,11 @@ public:
         if(!l1) return l2;
         if(!l2) return l1;
         ListNode *host, *guest;
-        if(l1->val <= l2->val){host = l1; guest = l2;}
-        else{host = l2; guest = l1;}
-        ListNode *p = host;
-        ListNode *q = guest;
+        if(l1->val <= l2->val)
+            {host = l1; guest = l2;}
+        else
+            {host = l2; guest = l1;}
+        ListNode *p = host, *q = guest;
         ListNode *p_next = p->next;
         ListNode *new_q;
         // Maintain invariant: find p & p_next pair that satisfy p->val <= q->val <= p_next->val.
