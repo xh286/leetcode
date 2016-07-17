@@ -31,7 +31,7 @@ private:
         }
         else
         {
-            host = list2, p = list2, q = list1.
+            host = list2, p = list2, q = list1;
         }
         // put sequence of nodes in q in between p & p->next. If no nodes in q satisfy, move p forward.
         ListNode* p_next = p->next;
