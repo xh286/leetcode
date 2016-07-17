@@ -56,12 +56,22 @@ private:
         p->next = q;
         return host;
     }
+    int getListSize(ListNode* list)
+    {
+        int count = 0;
+        while(list)
+        {
+            count++;
+            list = list->next;
+        }
+        return count;
+    }
 public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {
         multimap<int,int> mp;
         int K = lists.size();
         for(int i=0; i<K; i++)
-            mp.insert(pair<int,int>(lists[i].size(),i));
+            mp.insert(pair<int,int>(getListSize(lists[i]),i));
         while(mp.size()>=2)
         {
             auto it = mp.begin();
