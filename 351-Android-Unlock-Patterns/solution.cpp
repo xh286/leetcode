@@ -12,12 +12,8 @@ private:
         {
             switch(min(x_diff,y_diff))
             {
-                case 2: covered[x-1][y-1].push_back(5); break;
-                case 0: covered[x-1][y-1].push_back((x+y)/2); break;
-                case 1: if(x+y == 7) {covered[x-1][y-1].push_back(2); covered[x-1][y-1].push_back(5);}
-                        else if(x+y == 9){covered[x-1][y-1].push_back(4); covered[x-1][y-1].push_back(5);}
-                        else if(x+y == 11){covered[x-1][y-1].push_back(5); covered[x-1][y-1].push_back(6);}
-                        else if(x+y == 13){covered[x-1][y-1].push_back(5); covered[x-1][y-1].push_back(8);}
+                case 2: covered[x][y].push_back(5); break;
+                case 0: covered[x][y].push_back((x+y)/2); break;
             }
         }
     }
@@ -30,17 +26,17 @@ private:
         int n = res.size(); // each vector has length (k-1).
         for(int i=0; i<n; i++)
         {
-            vector<bool> s(9,false);
+            vector<bool> s(10,false);
             for(int j=0; j<k-1; j++)
                 s[res[i][j]] = true;
-            for(int j=0; j<9; j++)
+            for(int j=1; j<10; j++)
                 if(s[j]==false)
                 {
                     bool valid = true;
                     if(k>=2)
                     {
                         // check line connecting x & y do not cross keys not in set
-                        auto v = covered[res[i][k-2]-1][j-1];
+                        auto v = covered[res[i][k-2]][j+1];
                         for(int l=0; l<v.size(); l++)
                             if(!s[v[l]]) valid = false;
                     }
@@ -56,7 +52,7 @@ private:
     }
 public:
     int numberOfPatterns(int m, int n) {
-        vector<vector<vector<int>>> covered(9, vector<vector<int>>(9, vector<int>()));
+        vector<vector<vector<int>>> covered(10, vector<vector<int>>(10, vector<int>()));
         for(int i=1; i<=9; i++)
             for(int j=1; j<=9; j++)
                 calc_keys_covered(covered, i, j);
