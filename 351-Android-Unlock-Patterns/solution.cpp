@@ -36,14 +36,14 @@ private:
                     if(k>=2)
                     {
                         // check line connecting x & y do not cross keys not in set
-                        auto v = covered[res[i][k-2]][j+1];
+                        auto v = covered[res[i][k-2]][j];
                         for(int l=0; l<v.size(); l++)
                             if(!s[v[l]]) valid = false;
                     }
                     if(valid)
                     {
                         new_res.push_back(res[i]);
-                        new_res.back().push_back(j+1);
+                        new_res.back().push_back(j);
                     }
                 }
         }
