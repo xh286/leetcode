@@ -64,11 +64,7 @@ public:
         vector<vector<int>> res;
         res.push_back(vector<int>());
         int num;
-        for(int k=1; k<=n; k++)
-        {
-            num = numofPatterns(res,k,covered);
-            if(k>=m) ret += num;
-        }
+        
         return ret;
     }
 };
