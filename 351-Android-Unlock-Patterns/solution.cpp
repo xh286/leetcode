@@ -56,7 +56,7 @@ private:
     }
 public:
     int numberOfPatterns(int m, int n) {
-        vector<vector<vector<int>>> covered(9, vector<vector<int>>(9, vecotr<int>()));
+        vector<vector<vector<int>>> covered(9, vector<vector<int>>(9, vector<int>()));
         for(int i=1; i<=9; i++)
             for(int j=1; j<=9; j++)
                 calc_keys_covered(covered, i, j);
