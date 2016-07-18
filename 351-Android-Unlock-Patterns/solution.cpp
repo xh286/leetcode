@@ -47,7 +47,7 @@ private:
                     if(valid)
                     {
                         new_res.push_back(res[i]);
-                        new_res.back().push_back(j);
+                        new_res.back().push_back(j+1);
                     }
                 }
         }
