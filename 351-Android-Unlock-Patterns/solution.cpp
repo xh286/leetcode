@@ -12,12 +12,12 @@ private:
         {
             switch(min(x_diff,y_diff))
             {
-                case 2: covered[x][y].push_back(5); break;
-                case 0: covered[x][y].push_back((x+y)/2); break;
-                case 1: if(x+y == 7) {covered[x][y].push_back(2); covered[x][y].push_back(5);}
-                        else if(x+y == 9){covered[x][y].push_back(4); covered[x][y].push_back(5);}
-                        else if(x+y == 11){covered[x][y].push_back(5); covered[x][y].push_back(6);}
-                        else if(x+y == 13){covered[x][y].push_back(5); covered[x][y].push_back(8);}
+                case 2: covered[x-1][y-1].push_back(5); break;
+                case 0: covered[x-1][y-1].push_back((x+y)/2); break;
+                case 1: if(x+y == 7) {covered[x-1][y-1].push_back(2); covered[x-1][y-1].push_back(5);}
+                        else if(x+y == 9){covered[x-1][y-1].push_back(4); covered[x-1][y-1].push_back(5);}
+                        else if(x+y == 11){covered[x-1][y-1].push_back(5); covered[x-1][y-1].push_back(6);}
+                        else if(x+y == 13){covered[x-1][y-1].push_back(5); covered[x-1][y-1].push_back(8);}
             }
         }
     }
@@ -40,7 +40,7 @@ private:
                     if(k>=2)
                     {
                         // check line connecting x & y do not cross keys not in set
-                        auto v = covered[res[i][k-2]][j];
+                        auto v = covered[res[i][k-2]-1][j-1];
                         for(int l=0; l<v.size(); l++)
                             if(!s[v[l]]) valid = false;
                     }
@@ -64,7 +64,11 @@ public:
         vector<vector<int>> res;
         res.push_back(vector<int>());
         int num;
-        
+        for(int k=1; k<=n; k++)
+        {
+            num = numofPatterns(res,k,covered);
+            if(k>=m) ret += num;
+        }
         return ret;
     }
 };
