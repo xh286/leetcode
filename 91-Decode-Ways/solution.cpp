@@ -1,31 +1,36 @@
 class Solution {
-    /*  Idea is DFS, each time consume 1 or 2 chars (if the 2-char combination is between 10 to 26).
-        Increment count (data member of class, or pass by reference as a function parameter) when string is consumed.
-        Use C++ substring function s.substr(start, len) to generated unconsumed part.
-        Assume input string is only digits. But could be invalid.
-        Special case: 0. If encounter 0 as start of string, return directly.
-    */
-    
-    void DFS(string s, int& count)
-    {
-        int total_len = s.size();
-        if(total_len == 0)
-        {
-            count++; return;
-        }
-        // total_len >= 1
-        if(s[0] == '0') return;
-        DFS(s.substr(1,total_len-1),count);
-        if(total_len >= 2 && (s[0]=='1' || (s[0]=='2' && s[1]<='6')))
-        {
-            DFS(s.substr(2,total_len-2),count);
-        }
-    }
 public:
     int numDecodings(string s) {
-        if(0 == s.size()) return 0;
-        int count = 0;
-        DFS(s,count);
-        return count;
+        /* DP solution. Define two arrays:
+           a[i] for number of ways by s[i] and s[i] interpreted as single digit.
+           b[i] for number of ways by s[i] and s[i] interpreted as second digit of a double digit.
+           a[0] = 1, b[0] = 0.
+           For i>=1, if s[i]==0, then a[i]=0, b[i]=a[i-1] if s[i-1]==1 or 2, otherwise 0.
+           If s[i] 1~9, then a[i]=a[i-1]+b[i-1], b[i]=a[i-1] if s[i=1] ==1 or 2, and s[i] 0~6.
+        */
+        int n = s.size();
+        if(n==0) return 0;
+        if(s[0]=='0') return 0;
+        vector<int> a(n,0);
+        vector<int> b(n,0);
+        a[0] = 1;
+        for(int i=1; i<n; i++)
+        {
+            if(s[i]=='0')
+            {
+                a[i] = 0;
+                if(s[i-1] == '1' || s[i-1] == '2')
+                    b[i] = a[i-1];
+                // otherwise b[i]=0
+            }
+            else
+            {
+                a[i] = a[i-1] + b[i-1];
+                if(s[i-1] == '1' || (s[i-1] == '2' && s[i] <= '6'))
+                    b[i] = a[i-1];
+                // otherwise b[i]=0
+            }
+        }
+        return a[n-1]+b[n-1];
     }
 };
