@@ -20,17 +20,17 @@ class Solution {
         }
         // total_len >= 1
         if(s[0] == '0') return;
-        DFS(s.substr(1,total_len-1));
+        DFS(s.substr(1,total_len-1),count);
         if(total_len >= 2 && TwocharCombValid(s.substr(0,2)))
         {
-            DFS(s.substr(2,total_len-2));
+            DFS(s.substr(2,total_len-2),count);
         }
     }
 public:
     int numDecodings(string s) {
         if(0 == s.size()) return 0;
         int count = 0;
-        DFS(s);
+        DFS(s,count);
         return count;
     }
 };
