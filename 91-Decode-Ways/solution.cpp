@@ -5,12 +5,7 @@ class Solution {
         Assume input string is only digits. But could be invalid.
         Special case: 0. If encounter 0 as start of string, return directly.
     */
-    bool TwocharCombValid(string s)
-    {
-        if(s[0] == '1') return true;
-        if(s[0] == '2' && s[1] <= '6') return true;
-        return false;
-    }
+    
     void DFS(string s, int& count)
     {
         int total_len = s.size();
@@ -21,7 +16,7 @@ class Solution {
         // total_len >= 1
         if(s[0] == '0') return;
         DFS(s.substr(1,total_len-1),count);
-        if(total_len >= 2 && TwocharCombValid(s.substr(0,2)))
+        if(total_len >= 2 && (s[0]=='1' || (s[0]=='2' && s[1]<='6')))
         {
             DFS(s.substr(2,total_len-2),count);
         }
